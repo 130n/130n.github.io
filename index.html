@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentisk Utveckling @ Camfil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:     #06060b;
+      --card:   #111119;
+      --border: #1b1b2c;
+      --accent: #7c6af6;
+      --teal:   #22d3ee;
+      --green:  #4ade80;
+      --text:   #dde0f0;
+      --muted:  #57576e;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow: hidden;
+    }
+
+    main {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+
+    section {
+      height: 100vh;
+      scroll-snap-align: start;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem clamp(2.5rem, 8vw, 7rem);
+      background: var(--card);
+      border-radius: 20px 20px 0 0;
+    }
+
+    section:first-child {
+      background: var(--bg);
+      border-radius: 0;
+    }
+
+    /* ── Hero ── */
+    .eyebrow {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 em { font-style: normal; color: var(--accent); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      color: var(--muted);
+      font-weight: 300;
+      max-width: 44ch;
+    }
+
+    /* ── Slide header ── */
+    .slide-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.75rem;
+    }
+
+    /* ── Grid ── */
+    .cols   { display: grid; gap: 1.1rem; }
+    .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+    /* ── Card ── */
+    .card {
+      background: rgba(255,255,255,0.022);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+    }
+
+    .card-label {
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.85rem;
+    }
+
+    /* ── List ── */
+    ul.pts {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.42rem;
+    }
+
+    ul.pts li {
+      display: flex;
+      gap: 0.55rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    ul.pts li::before {
+      content: '›';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Flow ── */
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin: 0.65rem 0;
+    }
+
+    .fn {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 7px;
+      padding: 0.3rem 0.75rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .fa { color: var(--accent); font-size: 0.85rem; }
+
+    /* ── Tags ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+
+    .tag {
+      padding: 0.18rem 0.6rem;
+      border-radius: 99px;
+      font-size: 0.68rem;
+      font-weight: 500;
+      background: rgba(124,106,246,0.14);
+      border: 1px solid rgba(124,106,246,0.28);
+      color: var(--accent);
+    }
+    .tag.t { background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.28); color: var(--teal); }
+    .tag.g { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.28); color: var(--green); }
+
+    /* ── Bullet rows ── */
+    .brow { display: flex; align-items: flex-start; gap: 1rem; }
+    .brows { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .bicon {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 8px;
+      background: rgba(124,106,246,0.13);
+      border: 1px solid rgba(124,106,246,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .bt { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .bd { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+    /* ── Nav dots ── */
+    #dots {
+      position: fixed;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      z-index: 999;
+    }
+
+    .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .2s, transform .2s;
+    }
+
+    .dot.on { background: var(--accent); transform: scale(1.6); }
+
+    /* ── Slide counter ── */
+    .ctr {
+      position: absolute;
+      bottom: 1.6rem;
+      right: 2.5rem;
+      font-size: 0.62rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+
+<nav id="dots" aria-label="Navigering"></nav>
+
+<main id="scroll">
+
+  <!-- 1 ── HERO -->
+  <section>
+    <p class="eyebrow">Camfil · Agentisk Utveckling · 2025</p>
+    <h1>Hur vi jobbar<br>med <em>AI-agenter</em><br>i praktiken</h1>
+    <p class="hero-sub">Enterprise-integration, automation och agentic workflows — on the ground</p>
+    <span class="ctr">01 / 06</span>
+  </section>
+
+  <!-- 2 ── VAD VI BYGGER -->
+  <section>
+    <p class="slide-label">Systemet</p>
+    <h2>Vad vi bygger</h2>
+    <div class="cols cols-2">
+      <div class="card">
+        <p class="card-label">Mail-to-Order</p>
+        <div class="flow">
+          <span class="fn">Inkorg</span>
+          <span class="fa">→</span>
+          <span class="fn">Logic Apps</span>
+          <span class="fa">→</span>
+          <span class="fn">Azure Service</span>
+          <span class="fa">→</span>
+          <span class="fn">ERP</span>
+        </div>
+        <ul class="pts">
+          <li>Läser inkorgar och tolkar inkommande order-mail</li>
+          <li>Skapar offerter och säljordrar automatiskt</li>
+          <li>Hanterar tolkningsfall och undantag</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">Chat-Agent</p>
+        <ul class="pts">
+          <li>Hanterar övriga kundfrågor och statusförfrågningar</li>
+          <li>Söker i ordrar, produkter och kundinformation</li>
+          <li>Fallback för mail utanför M2O-flödet</li>
+        </ul>
+      </div>
+    </div>
+    <span class="ctr">02 / 06</span>
+  </section>
+
+  <!-- 3 ── ARKITEKTUR -->
+  <section>
+    <p class="slide-label">Teknik</p>
+    <h2>Arkitektur & Integration</h2>
+    <div style="margin-bottom:1.4rem">
+      <p style="font-size:0.72rem;color:var(--muted);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
+      <div class="flow">
+        <span class="fn">ERP-system</span>
+        <span class="fa">→</span>
+        <span class="fn">Microsoft Fabric</span>
+        <span class="fa">→</span>
+        <span class="fn">Sökindex</span>
+      </div>
+      <div class="tags">
+        <span class="tag t">Ordrar</span>
+        <span class="tag t">Produkter</span>
+        <span class="tag t">Kunder</span>
+        <span class="tag">Domän A</span>
+        <span class="tag">Domän B</span>
+      </div>
+    </div>
+    <div class="cols cols-3">
+      <div class="card">
+        <p class="card-label">Varnet</p>
+        <ul class="pts">
+          <li>Domän A</li>
+          <li>REST-anrop mot tjänster</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">MacPac</p>
+        <ul class="pts">
+          <li>Domän B</li>
+          <li>REST-anrop mot tjänster</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">D365</p>
+        <ul class="pts">
+          <li>Domän A + B</li>
+          <li>Direkta DB-queries</li>
+        </ul>
+      </div>
+    </div>
+    <span class="ctr">03 / 06</span>
+  </section>
+
+  <!-- 4 ── AGENTDRIVET ARBETSSÄTT -->
+  <section>
+    <p class="slide-label">Arbetssätt</p>
+    <h2>Agentdriven arbetsprocess</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">⌥</div>
+          <div>
+            <p class="bt">Worktrees + tmux</p>
+            <p class="bd">Flera agenter i parallell på separata branches</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">⚡</div>
+          <div>
+            <p class="bt">Claude vs Codex</p>
+            <p class="bd">Rätt verktyg för rätt uppgift — pågående debatt</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🗂</div>
+          <div>
+            <p class="bt">Azure DevOps</p>
+            <p class="bd">Tasks, repos, reviews och deploys i ett ställe</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🧩</div>
+          <div>
+            <p class="bt">Skills / Superpowers</p>
+            <p class="bd">Plan → Design → Implement → Review</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🔍</div>
+          <div>
+            <p class="bt">PR-template & Review</p>
+            <p class="bd">Automatiserad review-agent i CI-pipeline</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🧪</div>
+          <div>
+            <p class="bt">E2E-testskills</p>
+            <p class="bd">Chrome MCP + Docker + lokal databas utan mocks</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">04 / 06</span>
+  </section>
+
+  <!-- 5 ── SUPERPOWERS (MILJÖ) -->
+  <section>
+    <p class="slide-label">Miljö</p>
+    <h2>Lokala superkrafter</h2>
+    <div class="cols cols-3">
+      <div class="card">
+        <p class="card-label">Browser</p>
+        <ul class="pts">
+          <li>Chrome MCP — agenten kör browsern</li>
+          <li>E2E utan manuell testning</li>
+          <li>Visuell validering i CI</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">Infrastruktur</p>
+        <ul class="pts">
+          <li>Full Docker-åtkomst lokalt</li>
+          <li>Lokal databas — inga mocks</li>
+          <li>Integrationstester mot riktiga tjänster</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">Skills</p>
+        <ul class="pts">
+          <li>Plan / design / implement som separata agenter</li>
+          <li>Review-agent i pipeline</li>
+          <li>Specialiserade verktyg per uppgiftstyp</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tags" style="margin-top:1.4rem">
+      <span class="tag g">Git Worktrees</span>
+      <span class="tag g">tmux</span>
+      <span class="tag g">Claude Code</span>
+      <span class="tag g">Codex CLI</span>
+      <span class="tag g">Chrome MCP</span>
+      <span class="tag g">Docker</span>
+    </div>
+    <span class="ctr">05 / 06</span>
+  </section>
+
+  <!-- 6 ── PRODUKTION & MONITORERING -->
+  <section>
+    <p class="slide-label">Produktion</p>
+    <h2>Monitorering & Produktionsdata</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">👁</div>
+          <div>
+            <p class="bt">App Insights</p>
+            <p class="bd">Direkta queries mot telemetri, traces och loggar</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">📊</div>
+          <div>
+            <p class="bt">Microsoft Fabric</p>
+            <p class="bd">Analytics, datakvalitet och pipeline-status</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🗄</div>
+          <div>
+            <p class="bt">Läsåtkomst till prod-DB</p>
+            <p class="bd">Direkta queries för diagnos och validering</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🔐</div>
+          <div>
+            <p class="bt">Produktionsdata</p>
+            <p class="bd">Tydlig hantering av ansvar, åtkomst och datahygien</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">06 / 06</span>
+  </section>
+
+</main>
+
+<script>
+  const scroll    = document.getElementById('scroll');
+  const sections  = [...document.querySelectorAll('section')];
+  const nav       = document.getElementById('dots');
+  const N         = sections.length;
+  let   current   = 0;
+
+  const dots = sections.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'Bild ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    nav.appendChild(d);
+    return d;
+  });
+
+  function goTo(i) {
+    sections[i].scrollIntoView({ behavior: 'smooth' });
+  }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        const i = sections.indexOf(e.target);
+        if (i >= 0) {
+          current = i;
+          dots.forEach((d, j) => d.classList.toggle('on', j === i));
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => obs.observe(s));
+
+  document.addEventListener('keydown', e => {
+    const fwd = e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ';
+    const bck = e.key === 'ArrowUp'   || e.key === 'PageUp';
+    if (fwd) { e.preventDefault(); goTo(Math.min(current + 1, N - 1)); }
+    if (bck) { e.preventDefault(); goTo(Math.max(current - 1, 0)); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End')  { e.preventDefault(); goTo(N - 1); }
+  });
+</script>
+
+</body>
+</html>
