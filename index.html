@@ -55,8 +55,6 @@
         padding-left:  max(3rem, calc(50% - 480px));
         padding-right: max(3rem, calc(50% - 480px));
       }
-      .cols-3 { grid-template-columns: 1fr; min-width: 0; }
-      .scroll-x { overflow-x: visible; }
     }
 
     /* Even content slides: white */
@@ -126,7 +124,7 @@
     /* ── Grids ── */
     .cols   { display: grid; gap: 1rem; }
     .cols-2 { grid-template-columns: 1fr 1fr; }
-    .cols-3 { grid-template-columns: 1fr 1fr 1fr; min-width: 560px; }
+    .stack  { display: flex; flex-direction: column; gap: 1rem; }
 
     @media (max-width: 600px) {
       .cols-2 { grid-template-columns: 1fr; }
@@ -353,8 +351,7 @@
       </div>
     </div>
     <p class="explain">ERP (affärssystem) — de system som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner</p>
-    <div class="scroll-x">
-      <div class="cols cols-3">
+    <div class="stack">
         <div class="card">
           <p class="card-label">Varnet</p>
           <ul class="pts">
@@ -379,7 +376,6 @@
             <li>Direkta DB-queries</li>
           </ul>
         </div>
-      </div>
     </div>
     <span class="ctr">03 / 07</span>
   </section>
@@ -443,8 +439,7 @@
   <section id="superkrafter">
     <p class="slide-label">Miljö</p>
     <h2>Lokala superkrafter</h2>
-    <div class="scroll-x">
-      <div class="cols cols-3">
+    <div class="stack">
         <div class="card">
           <p class="card-label">Browser</p>
           <ul class="pts">
@@ -469,7 +464,6 @@
             <li>Specialiserade verktyg per uppgiftstyp</li>
           </ul>
         </div>
-      </div>
     </div>
     <div class="tags" style="margin-top:1.25rem">
       <span class="tag g">Git Worktrees</span>
