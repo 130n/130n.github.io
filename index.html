@@ -48,6 +48,14 @@
       border-radius: 20px 20px 0 0;
     }
 
+    /* Cap content width and center on wide screens */
+    @media (min-width: 900px) {
+      section {
+        padding-left:  max(3rem, calc(50% - 480px));
+        padding-right: max(3rem, calc(50% - 480px));
+      }
+    }
+
     /* Even content slides: white */
     section:nth-child(2n)   { background: var(--white); }
 
@@ -99,7 +107,7 @@
     }
 
     h2 {
-      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      font-size: clamp(1.7rem, 3.5vw, 3rem);
       font-weight: 700;
       letter-spacing: -0.03em;
       margin-bottom: 1.5rem;
@@ -159,7 +167,7 @@
     ul.pts li {
       display: flex;
       gap: 0.55rem;
-      font-size: 0.83rem;
+      font-size: 0.95rem;
       color: var(--muted);
       line-height: 1.45;
     }
@@ -184,8 +192,8 @@
       background: rgba(13,13,30,0.05);
       border: 1px solid rgba(13,13,30,0.1);
       border-radius: 6px;
-      padding: 0.28rem 0.7rem;
-      font-size: 0.78rem;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
       font-weight: 500;
     }
 
@@ -224,11 +232,11 @@
       margin-top: 0.05rem;
     }
 
-    .bt { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.12rem; }
-    .bd { font-size: 0.77rem; color: var(--muted); line-height: 1.4; }
+    .bt { font-size: 1rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .bd { font-size: 0.9rem; color: var(--muted); line-height: 1.45; }
 
     /* ── Explainer text ── */
-    .explain { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
+    .explain { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
 
     /* ── Nav dots ── */
     #dots {
