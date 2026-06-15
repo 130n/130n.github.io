@@ -8,25 +8,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg:     #06060b;
-      --card:   #111119;
-      --border: #1b1b2c;
-      --accent: #7c6af6;
-      --teal:   #22d3ee;
-      --green:  #4ade80;
-      --text:   #dde0f0;
-      --muted:  #57576e;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html, body { height: 100%; }
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: #0b0b14;
       overflow: hidden;
     }
 
@@ -34,8 +21,10 @@
       height: 100vh;
       overflow-y: scroll;
       scroll-snap-type: y mandatory;
+      overscroll-behavior-y: none;
     }
 
+    /* ── Sections: light by default, hero dark ── */
     section {
       height: 100vh;
       scroll-snap-align: start;
@@ -43,13 +32,15 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 3.5rem clamp(2.5rem, 8vw, 7rem);
-      background: var(--card);
+      padding: 3rem clamp(2rem, 7vw, 6rem);
+      background: #f5f5fa;
+      color: #0d0d1e;
       border-radius: 20px 20px 0 0;
     }
 
     section:first-child {
-      background: var(--bg);
+      background: #0b0b14;
+      color: #eeeeff;
       border-radius: 0;
     }
 
@@ -59,7 +50,7 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--accent);
+      color: #7c6af6;
       margin-bottom: 1.5rem;
     }
 
@@ -71,13 +62,13 @@
       margin-bottom: 1.5rem;
     }
 
-    h1 em { font-style: normal; color: var(--accent); }
+    h1 em { font-style: normal; color: #7c6af6; }
 
     .hero-sub {
-      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
-      color: var(--muted);
+      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+      color: #7878a0;
       font-weight: 300;
-      max-width: 44ch;
+      max-width: 46ch;
     }
 
     /* ── Slide header ── */
@@ -86,28 +77,35 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
+      color: #5b48e8;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
       font-weight: 700;
       letter-spacing: -0.03em;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1.5rem;
     }
 
-    /* ── Grid ── */
-    .cols   { display: grid; gap: 1.1rem; }
+    /* ── Horizontal scroll wrapper for wide grids ── */
+    .scroll-x {
+      overflow-x: auto;
+      overscroll-behavior: contain;
+      padding-bottom: 0.5rem;
+    }
+
+    /* ── Grids ── */
+    .cols   { display: grid; gap: 1rem; }
     .cols-2 { grid-template-columns: 1fr 1fr; }
-    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; min-width: 560px; }
 
     /* ── Card ── */
     .card {
-      background: rgba(255,255,255,0.022);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.3rem 1.5rem;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 1px 3px rgba(13,13,30,0.07), 0 0 0 1px rgba(13,13,30,0.06);
     }
 
     .card-label {
@@ -115,7 +113,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--teal);
+      color: #0891b2;
       margin-bottom: 0.85rem;
     }
 
@@ -124,69 +122,69 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.42rem;
+      gap: 0.4rem;
     }
 
     ul.pts li {
       display: flex;
       gap: 0.55rem;
-      font-size: 0.85rem;
-      color: var(--muted);
+      font-size: 0.83rem;
+      color: #666680;
       line-height: 1.45;
     }
 
     ul.pts li::before {
       content: '›';
-      color: var(--accent);
+      color: #5b48e8;
       font-weight: 700;
       flex-shrink: 0;
     }
 
-    /* ── Flow ── */
+    /* ── Flow nodes ── */
     .flow {
       display: flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
-      margin: 0.65rem 0;
+      margin: 0.6rem 0;
     }
 
     .fn {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      padding: 0.3rem 0.75rem;
+      background: rgba(13,13,30,0.05);
+      border: 1px solid rgba(13,13,30,0.1);
+      border-radius: 6px;
+      padding: 0.28rem 0.7rem;
       font-size: 0.78rem;
       font-weight: 500;
     }
 
-    .fa { color: var(--accent); font-size: 0.85rem; }
+    .fa { color: #5b48e8; font-size: 0.85rem; }
 
     /* ── Tags ── */
-    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.38rem; margin-top: 0.7rem; }
 
     .tag {
       padding: 0.18rem 0.6rem;
       border-radius: 99px;
-      font-size: 0.68rem;
-      font-weight: 500;
-      background: rgba(124,106,246,0.14);
-      border: 1px solid rgba(124,106,246,0.28);
-      color: var(--accent);
+      font-size: 0.67rem;
+      font-weight: 600;
+      background: rgba(91,72,232,0.1);
+      border: 1px solid rgba(91,72,232,0.2);
+      color: #5b48e8;
     }
-    .tag.t { background: rgba(34,211,238,0.1); border-color: rgba(34,211,238,0.28); color: var(--teal); }
-    .tag.g { background: rgba(74,222,128,0.1); border-color: rgba(74,222,128,0.28); color: var(--green); }
+    .tag.t { background: rgba(8,145,178,0.1); border-color: rgba(8,145,178,0.2); color: #0891b2; }
+    .tag.g { background: rgba(22,163,74,0.1);  border-color: rgba(22,163,74,0.2);  color: #16a34a; }
 
     /* ── Bullet rows ── */
-    .brow { display: flex; align-items: flex-start; gap: 1rem; }
-    .brows { display: flex; flex-direction: column; gap: 1.2rem; }
+    .brows { display: flex; flex-direction: column; gap: 1.15rem; }
+    .brow  { display: flex; align-items: flex-start; gap: 1rem; }
 
     .bicon {
       width: 2rem;
       height: 2rem;
       border-radius: 8px;
-      background: rgba(124,106,246,0.13);
-      border: 1px solid rgba(124,106,246,0.22);
+      background: rgba(91,72,232,0.1);
+      border: 1px solid rgba(91,72,232,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -195,18 +193,21 @@
       margin-top: 0.05rem;
     }
 
-    .bt { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.15rem; }
-    .bd { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+    .bt { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.12rem; }
+    .bd { font-size: 0.77rem; color: #666680; line-height: 1.4; }
+
+    /* ── Explainer text ── */
+    .explain { font-size: 0.78rem; color: #888899; margin-bottom: 1rem; }
 
     /* ── Nav dots ── */
     #dots {
       position: fixed;
-      right: 1.5rem;
+      right: 1.4rem;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.5rem;
       z-index: 999;
     }
 
@@ -214,25 +215,27 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: var(--border);
+      background: rgba(100,100,140,0.35);
       border: none;
       cursor: pointer;
       padding: 0;
       transition: background .2s, transform .2s;
     }
 
-    .dot.on { background: var(--accent); transform: scale(1.6); }
+    .dot.on { background: #5b48e8; transform: scale(1.6); }
 
     /* ── Slide counter ── */
     .ctr {
       position: absolute;
-      bottom: 1.6rem;
+      bottom: 1.5rem;
       right: 2.5rem;
       font-size: 0.62rem;
-      color: var(--muted);
       letter-spacing: 0.1em;
       font-variant-numeric: tabular-nums;
+      color: rgba(13,13,30,0.25);
     }
+
+    section:first-child .ctr { color: rgba(238,238,255,0.2); }
   </style>
 </head>
 <body>
@@ -288,8 +291,8 @@
   <section>
     <p class="slide-label">Teknik</p>
     <h2>Arkitektur & Integration</h2>
-    <div style="margin-bottom:1.4rem">
-      <p style="font-size:0.72rem;color:var(--muted);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
+    <div style="margin-bottom:1.1rem">
+      <p style="font-size:0.65rem;color:#5b48e8;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
       <div class="flow">
         <span class="fn">ERP-system</span>
         <span class="fa">→</span>
@@ -305,31 +308,33 @@
         <span class="tag">Domän B</span>
       </div>
     </div>
-    <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem">ERP (affärssystem) — de system som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner</p>
-    <div class="cols cols-3">
-      <div class="card">
-        <p class="card-label">Varnet</p>
-        <ul class="pts">
-          <li>Domän A</li>
-          <li>Äldre affärssystem, nordiska marknader</li>
-          <li>REST-anrop mot tjänster</li>
-        </ul>
-      </div>
-      <div class="card">
-        <p class="card-label">MacPac</p>
-        <ul class="pts">
-          <li>Domän B</li>
-          <li>Affärssystem för Australien/NZ</li>
-          <li>REST-anrop mot tjänster</li>
-        </ul>
-      </div>
-      <div class="card">
-        <p class="card-label">Dynamics 365</p>
-        <ul class="pts">
-          <li>Domän A + B</li>
-          <li>Microsofts molnbaserade ERP</li>
-          <li>Direkta DB-queries</li>
-        </ul>
+    <p class="explain">ERP (affärssystem) — de system som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner</p>
+    <div class="scroll-x">
+      <div class="cols cols-3">
+        <div class="card">
+          <p class="card-label">Varnet</p>
+          <ul class="pts">
+            <li>Domän A</li>
+            <li>Äldre affärssystem, nordiska marknader</li>
+            <li>REST-anrop mot tjänster</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card-label">MacPac</p>
+          <ul class="pts">
+            <li>Domän B</li>
+            <li>Affärssystem för Australien/NZ</li>
+            <li>REST-anrop mot tjänster</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card-label">Dynamics 365</p>
+          <ul class="pts">
+            <li>Domän A + B</li>
+            <li>Microsofts molnbaserade ERP</li>
+            <li>Direkta DB-queries</li>
+          </ul>
+        </div>
       </div>
     </div>
     <span class="ctr">03 / 06</span>
@@ -390,37 +395,39 @@
     <span class="ctr">04 / 06</span>
   </section>
 
-  <!-- 5 ── SUPERPOWERS (MILJÖ) -->
+  <!-- 5 ── LOKALA SUPERKRAFTER -->
   <section>
     <p class="slide-label">Miljö</p>
     <h2>Lokala superkrafter</h2>
-    <div class="cols cols-3">
-      <div class="card">
-        <p class="card-label">Browser</p>
-        <ul class="pts">
-          <li>Chrome MCP — agenten kör browsern</li>
-          <li>E2E utan manuell testning</li>
-          <li>Visuell validering i CI</li>
-        </ul>
-      </div>
-      <div class="card">
-        <p class="card-label">Infrastruktur</p>
-        <ul class="pts">
-          <li>Full Docker-åtkomst lokalt</li>
-          <li>Lokal databas — inga mocks</li>
-          <li>Integrationstester mot riktiga tjänster</li>
-        </ul>
-      </div>
-      <div class="card">
-        <p class="card-label">Skills</p>
-        <ul class="pts">
-          <li>Plan / design / implement som separata agenter</li>
-          <li>Review-agent i pipeline</li>
-          <li>Specialiserade verktyg per uppgiftstyp</li>
-        </ul>
+    <div class="scroll-x">
+      <div class="cols cols-3">
+        <div class="card">
+          <p class="card-label">Browser</p>
+          <ul class="pts">
+            <li>Chrome MCP — agenten kör browsern</li>
+            <li>E2E utan manuell testning</li>
+            <li>Visuell validering i CI</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card-label">Infrastruktur</p>
+          <ul class="pts">
+            <li>Full Docker-åtkomst lokalt</li>
+            <li>Lokal databas — inga mocks</li>
+            <li>Integrationstester mot riktiga tjänster</li>
+          </ul>
+        </div>
+        <div class="card">
+          <p class="card-label">Skills</p>
+          <ul class="pts">
+            <li>Plan / design / implement som separata agenter</li>
+            <li>Review-agent i pipeline</li>
+            <li>Specialiserade verktyg per uppgiftstyp</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="tags" style="margin-top:1.4rem">
+    <div class="tags" style="margin-top:1.25rem">
       <span class="tag g">Git Worktrees</span>
       <span class="tag g">tmux</span>
       <span class="tag g">Claude Code</span>
@@ -475,11 +482,10 @@
 </main>
 
 <script>
-  const scroll    = document.getElementById('scroll');
-  const sections  = [...document.querySelectorAll('section')];
-  const nav       = document.getElementById('dots');
-  const N         = sections.length;
-  let   current   = 0;
+  const sections = [...document.querySelectorAll('section')];
+  const nav      = document.getElementById('dots');
+  const N        = sections.length;
+  let   current  = 0;
 
   const dots = sections.map((_, i) => {
     const d = document.createElement('button');
@@ -490,9 +496,7 @@
     return d;
   });
 
-  function goTo(i) {
-    sections[i].scrollIntoView({ behavior: 'smooth' });
-  }
+  function goTo(i) { sections[i].scrollIntoView({ behavior: 'smooth' }); }
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
