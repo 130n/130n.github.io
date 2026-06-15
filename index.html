@@ -287,7 +287,7 @@
 <main id="scroll">
 
   <!-- 1 ── HERO -->
-  <section>
+  <section id="hero">
     <p class="eyebrow">Camfil · Agentisk Utveckling · 2026</p>
     <h1>Hur vi jobbar<br>med <em>AI-agenter</em><br>i praktiken</h1>
     <p class="hero-sub">Automatisering med agentdrivna arbetsflöden och hur vi jobbar</p>
@@ -295,7 +295,7 @@
   </section>
 
   <!-- 2 ── VAD VI BYGGER -->
-  <section>
+  <section id="system">
     <p class="slide-label">Systemet</p>
     <h2>Vad vi bygger</h2>
     <div class="cols cols-2">
@@ -332,7 +332,7 @@
   </section>
 
   <!-- 3 ── ARKITEKTUR -->
-  <section>
+  <section id="arkitektur">
     <p class="slide-label">Teknik</p>
     <h2>Arkitektur & Integration</h2>
     <div style="margin-bottom:1.1rem">
@@ -385,7 +385,7 @@
   </section>
 
   <!-- 4 ── AGENTDRIVET ARBETSSÄTT -->
-  <section>
+  <section id="arbetsprocess">
     <p class="slide-label">Arbetssätt</p>
     <h2>Agentdriven arbetsprocess</h2>
     <div class="cols cols-2">
@@ -440,7 +440,7 @@
   </section>
 
   <!-- 5 ── LOKALA SUPERKRAFTER -->
-  <section>
+  <section id="superkrafter">
     <p class="slide-label">Miljö</p>
     <h2>Lokala superkrafter</h2>
     <div class="scroll-x">
@@ -483,7 +483,7 @@
   </section>
 
   <!-- 6 ── PRODUKTION & MONITORERING -->
-  <section>
+  <section id="produktion">
     <p class="slide-label">Produktion</p>
     <h2>Monitorering & Produktionsdata</h2>
     <div class="cols cols-2">
@@ -524,7 +524,7 @@
   </section>
 
   <!-- 7 ── INSIKTER -->
-  <section>
+  <section id="insikter">
     <p class="slide-label">Insikter</p>
     <h2>Vad vi lärt oss</h2>
     <div class="cols cols-2">
@@ -594,12 +594,19 @@
           current = i;
           dots.forEach((d, j) => d.classList.toggle('on', j === i));
           document.body.style.backgroundColor = slideBgs[Math.max(0, i - 1)];
+          history.replaceState(null, '', '#' + e.target.id);
         }
       }
     });
   }, { threshold: 0.5 });
 
   sections.forEach(s => obs.observe(s));
+
+  // Restore position from URL hash on load
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'instant' }), 0);
+  }
 
   document.addEventListener('keydown', e => {
     const fwd = e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ';
