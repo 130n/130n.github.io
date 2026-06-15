@@ -48,8 +48,9 @@
       border-radius: 20px 20px 0 0;
     }
 
-    /* Cap content width and center on wide screens */
+    /* Cap content width and center on wide screens, double base font */
     @media (min-width: 900px) {
+      html { font-size: 32px; }
       section {
         padding-left:  max(3rem, calc(50% - 480px));
         padding-right: max(3rem, calc(50% - 480px));
