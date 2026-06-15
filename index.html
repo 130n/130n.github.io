@@ -116,6 +116,10 @@
     .cols-2 { grid-template-columns: 1fr 1fr; }
     .cols-3 { grid-template-columns: 1fr 1fr 1fr; min-width: 560px; }
 
+    @media (max-width: 600px) {
+      .cols-2 { grid-template-columns: 1fr; }
+    }
+
     /* ── Card ── */
     .card {
       border-radius: 12px;
@@ -307,6 +311,8 @@
           <li>Hanterar övriga kundfrågor och statusförfrågningar</li>
           <li>Söker i ordrar, produkter och kundinformation</li>
           <li>Fallback för mail utanför M2O-flödet</li>
+          <li>Outlook add-in för direkt åtkomst i mejlklienten</li>
+          <li>HITL-bekräftelse för att konvertera svar till offert</li>
         </ul>
       </div>
     </div>
