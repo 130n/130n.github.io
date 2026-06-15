@@ -23,8 +23,9 @@
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: #0b0b14;
+      background: var(--hero-bg);
       overflow: hidden;
+      transition: background-color 0.25s ease;
     }
 
     main {
@@ -560,6 +561,9 @@
   const N        = sections.length;
   let   current  = 0;
 
+  // Slide background colors in order — body bg syncs to previous slide's color
+  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef'];
+
   const dots = sections.map((_, i) => {
     const d = document.createElement('button');
     d.className = 'dot' + (i === 0 ? ' on' : '');
@@ -578,6 +582,7 @@
         if (i >= 0) {
           current = i;
           dots.forEach((d, j) => d.classList.toggle('on', j === i));
+          document.body.style.backgroundColor = slideBgs[Math.max(0, i - 1)];
         }
       }
     });
