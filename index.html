@@ -8,6 +8,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --accent:  #da9926;
+      --acc-bg:  rgba(218,153,38,0.1);
+      --acc-bd:  rgba(218,153,38,0.2);
+      --muted:   #939393;
+      --hero-bg: #111110;
+      --white:   #ffffff;
+      --sepia:   #faf6ef;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
 
@@ -24,7 +34,7 @@
       overscroll-behavior-y: none;
     }
 
-    /* ── Sections: light by default, hero dark ── */
+    /* ── Sections: alternating white / sepia, hero dark ── */
     section {
       height: 100vh;
       scroll-snap-align: start;
@@ -33,13 +43,19 @@
       flex-direction: column;
       justify-content: center;
       padding: 3rem clamp(2rem, 7vw, 6rem);
-      background: #f5f5fa;
       color: #0d0d1e;
       border-radius: 20px 20px 0 0;
     }
 
+    /* Even content slides: white */
+    section:nth-child(2n)   { background: var(--white); }
+
+    /* Odd content slides (not hero): sepia */
+    section:nth-child(2n+1):not(:first-child) { background: var(--sepia); }
+
+    /* Hero: mörk */
     section:first-child {
-      background: #0b0b14;
+      background: var(--hero-bg);
       color: #eeeeff;
       border-radius: 0;
     }
@@ -50,7 +66,7 @@
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #7c6af6;
+      color: var(--accent);
       margin-bottom: 1.5rem;
     }
 
@@ -62,11 +78,11 @@
       margin-bottom: 1.5rem;
     }
 
-    h1 em { font-style: normal; color: #7c6af6; }
+    h1 em { font-style: normal; color: var(--accent); }
 
     .hero-sub {
       font-size: clamp(0.9rem, 1.4vw, 1.1rem);
-      color: #7878a0;
+      color: var(--muted);
       font-weight: 300;
       max-width: 46ch;
     }
@@ -77,7 +93,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #5b48e8;
+      color: var(--accent);
       margin-bottom: 0.5rem;
     }
 
@@ -102,10 +118,20 @@
 
     /* ── Card ── */
     .card {
-      background: #ffffff;
       border-radius: 12px;
       padding: 1.25rem 1.4rem;
-      box-shadow: 0 1px 3px rgba(13,13,30,0.07), 0 0 0 1px rgba(13,13,30,0.06);
+    }
+
+    /* White slide → kort med ljusgrå bakgrund */
+    section:nth-child(2n) .card {
+      background: #f4f4f8;
+      border: 1px solid #e8e8ee;
+    }
+
+    /* Sepia slide → vita kort */
+    section:nth-child(2n+1):not(:first-child) .card {
+      background: var(--white);
+      box-shadow: 0 1px 3px rgba(13,13,30,0.07), 0 0 0 1px rgba(13,13,30,0.05);
     }
 
     .card-label {
@@ -113,7 +139,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #0891b2;
+      color: var(--accent);
       margin-bottom: 0.85rem;
     }
 
@@ -129,13 +155,13 @@
       display: flex;
       gap: 0.55rem;
       font-size: 0.83rem;
-      color: #666680;
+      color: var(--muted);
       line-height: 1.45;
     }
 
     ul.pts li::before {
       content: '›';
-      color: #5b48e8;
+      color: var(--accent);
       font-weight: 700;
       flex-shrink: 0;
     }
@@ -158,7 +184,7 @@
       font-weight: 500;
     }
 
-    .fa { color: #5b48e8; font-size: 0.85rem; }
+    .fa { color: var(--accent); font-size: 0.85rem; }
 
     /* ── Tags ── */
     .tags { display: flex; flex-wrap: wrap; gap: 0.38rem; margin-top: 0.7rem; }
@@ -168,11 +194,11 @@
       border-radius: 99px;
       font-size: 0.67rem;
       font-weight: 600;
-      background: rgba(91,72,232,0.1);
-      border: 1px solid rgba(91,72,232,0.2);
-      color: #5b48e8;
+      background: var(--acc-bg);
+      border: 1px solid var(--acc-bd);
+      color: var(--accent);
     }
-    .tag.t { background: rgba(8,145,178,0.1); border-color: rgba(8,145,178,0.2); color: #0891b2; }
+    .tag.t { background: var(--acc-bg); border-color: var(--acc-bd); color: var(--accent); }
     .tag.g { background: rgba(22,163,74,0.1);  border-color: rgba(22,163,74,0.2);  color: #16a34a; }
 
     /* ── Bullet rows ── */
@@ -183,8 +209,8 @@
       width: 2rem;
       height: 2rem;
       border-radius: 8px;
-      background: rgba(91,72,232,0.1);
-      border: 1px solid rgba(91,72,232,0.18);
+      background: var(--acc-bg);
+      border: 1px solid var(--acc-bd);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -194,10 +220,10 @@
     }
 
     .bt { font-size: 0.9rem; font-weight: 600; margin-bottom: 0.12rem; }
-    .bd { font-size: 0.77rem; color: #666680; line-height: 1.4; }
+    .bd { font-size: 0.77rem; color: var(--muted); line-height: 1.4; }
 
     /* ── Explainer text ── */
-    .explain { font-size: 0.78rem; color: #888899; margin-bottom: 1rem; }
+    .explain { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
 
     /* ── Nav dots ── */
     #dots {
@@ -222,7 +248,7 @@
       transition: background .2s, transform .2s;
     }
 
-    .dot.on { background: #5b48e8; transform: scale(1.6); }
+    .dot.on { background: var(--accent); transform: scale(1.6); }
 
     /* ── Slide counter ── */
     .ctr {
@@ -292,7 +318,7 @@
     <p class="slide-label">Teknik</p>
     <h2>Arkitektur & Integration</h2>
     <div style="margin-bottom:1.1rem">
-      <p style="font-size:0.65rem;color:#5b48e8;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
+      <p style="font-size:0.65rem;color:var(--accent);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
       <div class="flow">
         <span class="fn">ERP-system</span>
         <span class="fa">→</span>
