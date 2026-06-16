@@ -124,11 +124,29 @@
     /* ── Grids ── */
     .cols   { display: grid; gap: 1rem; }
     .cols-2 { grid-template-columns: 1fr 1fr; }
+    .cols-3 { grid-template-columns: 1fr 1fr 1fr; }
     .stack  { display: flex; flex-direction: column; gap: 0.3rem; }
 
     @media (max-width: 600px) {
-      .cols-2 { grid-template-columns: 1fr; }
+      .cols-2, .cols-3 { grid-template-columns: 1fr; }
     }
+
+    /* ── External link badge ── */
+    .ext {
+      font-size: 0.48em;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(218,153,38,0.35);
+      letter-spacing: 0.06em;
+      padding: 0.05em 0.2em;
+      vertical-align: middle;
+      margin-left: 0.25em;
+      opacity: 0.65;
+      transition: opacity 0.15s;
+      white-space: nowrap;
+    }
+    .ext:hover { opacity: 1; }
 
     /* ── Card ── */
     .card {
@@ -334,10 +352,14 @@
     }
     .brow-tip:hover::after { opacity: 1; }
 
-    /* ── Insikter slide spacing overrides (8 items need tighter fit at 720p) ── */
-    #insikter .brows { gap: 0.15rem; }
-    #insikter h2 { margin-bottom: 0.35rem; }
-    #insikter .slide-label { margin-bottom: 0.15rem; }
+    /* ── Insikter slide: 3-col tighter fit at 720p ── */
+    #insikter .brows { gap: 0.1rem; }
+    #insikter h2 { margin-bottom: 0.3rem; }
+    #insikter .slide-label { margin-bottom: 0.12rem; }
+    #insikter .bt { font-size: 0.82rem; }
+    #insikter .bd { font-size: 0.72rem; }
+    #insikter .bicon { width: 1.2rem; height: 1.2rem; font-size: 0.72rem; }
+    #insikter .brow { gap: 0.4rem; }
 
     /* ── Phase bars ── */
     .ph-legend {
@@ -665,52 +687,54 @@
   <section id="insikter">
     <p class="slide-label">Insikter</p>
     <h2>Vad vi lärt oss</h2>
-    <div class="cols cols-2">
+    <div class="cols cols-3">
       <div class="brows">
         <div class="brow">
           <div class="bicon">💸</div>
           <div>
-            <p class="bt">Äntligen lönsamt att optimera sin process</p>
-            <p class="bd">Allt som scriptas sparar pengar, olikt manuellt klickande kollegor</p>
+            <p class="bt">Äntligen lönsamt att optimera</p>
+            <p class="bd">Det som scriptas sparar pengar. Manuellt klickande gör det inte</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">🤝</div>
           <div>
             <p class="bt">Mindre kontroll, bättre resultat</p>
-            <p class="bd">Styrda flöden fastnar. Fria supervisors löser problem själva</p>
+            <p class="bd">Styrda flöden fastnar. Fria supervisors löser det</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">⚡</div>
           <div>
             <p class="bt">Parallellism kan vara billigare</p>
-            <p class="bd">Fler onödiga anrop, men färre agent-turns. Totalt billigare</p>
-          </div>
-        </div>
-        <div class="brow">
-          <div class="bicon">🧹</div>
-          <div>
-            <p class="bt">#lintmaxxing</p>
-            <p class="bd">Alla lint-regler på. Tvingar fram enklare och tydligare kod</p>
+            <p class="bd">Fler anrop men färre agent-turns. Totalt billigare</p>
           </div>
         </div>
       </div>
       <div class="brows">
         <div class="brow">
+          <div class="bicon">🧹</div>
+          <div>
+            <p class="bt">#lintmaxxing</p>
+            <p class="bd">Alla lint-regler på. Tvingar fram enklare kod</p>
+          </div>
+        </div>
+        <div class="brow">
           <div class="bicon">🔄</div>
           <div>
             <p class="bt">Självförbättrande workflow</p>
-            <p class="bd">Konvertera rutinarbete till skills. /insights med jämna mellanrum</p>
+            <p class="bd">Skills för rutinarbete. /insights fångar mönster</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">🖥</div>
           <div>
             <p class="bt">Never touch UI again</p>
-            <p class="bd">Bra MCP/CLI ersätter webb-UI nästan helt. Snabbare och reproducerbart</p>
+            <p class="bd">Bra MCP/CLI ersätter webb-UI. Snabbare och reproducerbart</p>
           </div>
         </div>
+      </div>
+      <div class="brows">
         <div class="brow">
           <div class="bicon">🔑</div>
           <div>
@@ -722,7 +746,14 @@
           <div class="bicon">🗂️</div>
           <div>
             <p class="bt">Kontext = 100 tabbar</p>
-            <p class="bd">Degraderar precision och ökar kostnad. Komprimera rutinmässigt</p>
+            <p class="bd">Degraderar precision, komprimera rutinmässigt</p>
+          </div>
+        </div>
+        <div class="brow brow-tip" data-tip="Bra format men vår användning var optimistisk: dynamiska projektioner och AI-styrda fält innebär att hela schemat måste in i kontext up front. Dyrt för varje anrop.">
+          <div class="bicon">📐</div>
+          <div>
+            <p class="bt">Toon <a href="https://github.com/toon-format/toon" target="_blank" class="ext">gh ↗</a></p>
+            <p class="bd">Hela schemat i kontext up front. Dyrt för dynamiska projektioner</p>
           </div>
         </div>
       </div>
