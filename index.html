@@ -384,50 +384,47 @@
   <section id="arbetsprocess">
     <p class="slide-label">Arbetssätt</p>
     <h2>Agentdriven arbetsprocess</h2>
+    <div class="flow" style="margin-bottom:1.25rem">
+      <span class="fn">DevOps MCP</span>
+      <span class="fa">→</span>
+      <span class="fn">Worktree + tmux</span>
+      <span class="fa">→</span>
+      <span class="fn">Design / plan</span>
+      <span class="fa">→</span>
+      <span class="fn">Kod</span>
+      <span class="fa">→</span>
+      <span class="fn">Testskills</span>
+    </div>
     <div class="cols cols-2">
       <div class="brows">
         <div class="brow">
-          <div class="bicon">⌥</div>
-          <div>
-            <p class="bt">Worktrees + tmux</p>
-            <p class="bd">Flera agenter i parallell på separata branches</p>
-          </div>
-        </div>
-        <div class="brow">
-          <div class="bicon">⚡</div>
-          <div>
-            <p class="bt">Claude vs Codex</p>
-            <p class="bd">Pågående debatt, men Claude vinner just nu</p>
-          </div>
-        </div>
-        <div class="brow">
           <div class="bicon">🗂</div>
           <div>
-            <p class="bt">Azure DevOps</p>
-            <p class="bd">Tasks, repos, reviews och deploys i ett ställe</p>
+            <p class="bt">DevOps MCP</p>
+            <p class="bd">Agenten hämtar och uppdaterar tasks direkt, utan att lämna terminalen</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">⌥</div>
+          <div>
+            <p class="bt">Worktree + tmux</p>
+            <p class="bd">Egen branch och session per uppgift, flera agenter i parallell</p>
           </div>
         </div>
       </div>
       <div class="brows">
         <div class="brow">
-          <div class="bicon">🧩</div>
+          <div class="bicon">🧭</div>
           <div>
-            <p class="bt">Skills / Superpowers</p>
-            <p class="bd">Plan → Design → Implement → Review</p>
-          </div>
-        </div>
-        <div class="brow">
-          <div class="bicon">🔍</div>
-          <div>
-            <p class="bt">PR-template & Review</p>
-            <p class="bd">Automatiserad review-agent i CI-pipeline</p>
+            <p class="bt">Design / plan</p>
+            <p class="bd">Agenten skissar lösningen innan koden skrivs</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">🧪</div>
           <div>
-            <p class="bt">E2E-testskills</p>
-            <p class="bd">Chrome MCP + Docker + lokal databas utan mocks</p>
+            <p class="bt">Testskills</p>
+            <p class="bd">docker-compose.worktree + e2e/api-tester innan PR</p>
           </div>
         </div>
       </div>
@@ -439,39 +436,39 @@
   <section id="superkrafter">
     <p class="slide-label">Miljö</p>
     <h2>Lokala superkrafter</h2>
-    <div class="stack">
-        <div class="card">
-          <p class="card-label">Browser</p>
-          <ul class="pts">
-            <li>Chrome MCP, agenten kör browsern</li>
-            <li>E2E utan manuell testning</li>
-            <li>Visuell validering i CI</li>
-          </ul>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🧪</div>
+          <div>
+            <p class="bt">TDD + coding-subagents</p>
+            <p class="bd">Testdriven implementation. /langgraph-fundamentals + graphify hittar och indexerar i kodbasen</p>
+          </div>
         </div>
-        <div class="card">
-          <p class="card-label">Infrastruktur</p>
-          <ul class="pts">
-            <li>Full Docker-åtkomst lokalt</li>
-            <li>Lokal databas utan mocks</li>
-            <li>Integrationstester mot riktiga tjänster</li>
-          </ul>
+        <div class="brow">
+          <div class="bicon">🌐</div>
+          <div>
+            <p class="bt">Chrome MCP</p>
+            <p class="bd">Agenten kör webbläsaren själv, browsertestning utan manuella steg</p>
+          </div>
         </div>
-        <div class="card">
-          <p class="card-label">Skills</p>
-          <ul class="pts">
-            <li>Plan / design / implement som separata agenter</li>
-            <li>Review-agent i pipeline</li>
-            <li>Varje agent med ett tydligt ansvarsområde</li>
-          </ul>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🔍</div>
+          <div>
+            <p class="bt">Codereview & simplify-skills</p>
+            <p class="bd">En uppsjö av skills som granskar och förenklar kod innan den når en människa</p>
+          </div>
         </div>
-    </div>
-    <div class="tags" style="margin-top:1.25rem">
-      <span class="tag g">Git Worktrees</span>
-      <span class="tag g">tmux</span>
-      <span class="tag g">Claude Code</span>
-      <span class="tag g">Codex CLI</span>
-      <span class="tag g">Chrome MCP</span>
-      <span class="tag g">Docker</span>
+        <div class="brow">
+          <div class="bicon">✅</div>
+          <div>
+            <p class="bt">/pr-ready</p>
+            <p class="bd">Stämmer av mot issue och acceptanskriterier, lintar, testar, skapar PR med mall och tilldelar reviewers</p>
+          </div>
+        </div>
+      </div>
     </div>
     <span class="ctr">05 / 07</span>
   </section>
