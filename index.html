@@ -311,6 +311,65 @@
     }
 
     section:first-child .ctr { color: rgba(238,238,255,0.2); }
+
+    /* ── Phase bars ── */
+    .ph-legend {
+      display: flex;
+      gap: 1.1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .ph-legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .ph-dot {
+      display: inline-block;
+      width: 0.55rem;
+      height: 0.55rem;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .ph-bars { display: flex; flex-direction: column; gap: 1rem; }
+    .ph-row  { display: flex; align-items: center; gap: 0.85rem; }
+    .ph-lbl  {
+      width: 3.5rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-align: right;
+      color: var(--muted);
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .ph-track {
+      flex: 1;
+      display: flex;
+      height: 2.6rem;
+      border-radius: 10px;
+      overflow: hidden;
+      gap: 3px;
+    }
+    .ph-seg {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+    .ph-seg span {
+      font-size: 0.48rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
@@ -324,7 +383,7 @@
     <p class="eyebrow">Camfil · Agentisk Utveckling · 2026</p>
     <h1>Hur vi bygger<br><em>AI-agenter</em><br>med AI-agenter</h1>
     <p class="hero-sub">Automatisering med agentdrivna arbetsflöden och hur vi jobbar</p>
-    <span class="ctr">01 / 09</span>
+    <span class="ctr">01 / 10</span>
   </section>
 
   <!-- 2 ── VAD VI BYGGER -->
@@ -360,7 +419,7 @@
         </ul>
       </div>
     </div>
-    <span class="ctr">02 / 09</span>
+    <span class="ctr">02 / 10</span>
   </section>
 
   <!-- 3 ── ARKITEKTUR -->
@@ -411,7 +470,7 @@
           <p class="bd">Orderexport via SalesOrders REST API</p>
         </div>
     </div>
-    <span class="ctr">03 / 09</span>
+    <span class="ctr">03 / 10</span>
   </section>
 
   <!-- 4 ── MEME: WINDOWS -->
@@ -420,7 +479,7 @@
       <h2 class="meme-title">Windows</h2>
       <img class="meme-img" src="assets/windows-nerd.jpg" alt="90-talsnörd vid en gammal dator i källaren">
     </div>
-    <span class="ctr">04 / 09</span>
+    <span class="ctr">04 / 10</span>
   </section>
 
   <!-- 5 ── MEME: WSL -->
@@ -429,7 +488,7 @@
       <h2 class="meme-title">WSL</h2>
       <img class="meme-img" src="assets/hackerman-powerglove.jpg" alt="Hackerman drar på sin powerglove">
     </div>
-    <span class="ctr">05 / 09</span>
+    <span class="ctr">05 / 10</span>
   </section>
 
   <!-- 6 ── PRODUKTION & MONITORERING -->
@@ -470,7 +529,7 @@
         </div>
       </div>
     </div>
-    <span class="ctr">06 / 09</span>
+    <span class="ctr">06 / 10</span>
   </section>
 
   <!-- 7 ── AGENTDRIVET ARBETSSÄTT -->
@@ -522,7 +581,7 @@
         </div>
       </div>
     </div>
-    <span class="ctr">07 / 09</span>
+    <span class="ctr">07 / 10</span>
   </section>
 
   <!-- 8 ── LOKALA SUPERKRAFTER -->
@@ -570,7 +629,7 @@
         </div>
       </div>
     </div>
-    <span class="ctr">08 / 09</span>
+    <span class="ctr">08 / 10</span>
   </section>
 
   <!-- 9 ── INSIKTER -->
@@ -632,7 +691,58 @@
         </div>
       </div>
     </div>
-    <span class="ctr">09 / 09</span>
+    <span class="ctr">09 / 10</span>
+  </section>
+
+  <!-- 10 ── PHASE VISUALIZATION -->
+  <section id="workflow">
+    <p class="slide-label">Insikter</p>
+    <h2>Planering ersätter iteration</h2>
+    <div class="ph-legend">
+      <span><span class="ph-dot" style="background:#8b5cf6"></span>Discovery</span>
+      <span><span class="ph-dot" style="background:#3b82f6"></span>Planering</span>
+      <span><span class="ph-dot" style="background:#da9926"></span>Implementation</span>
+      <span><span class="ph-dot" style="background:#10b981"></span>Review</span>
+      <span><span class="ph-dot" style="background:#06b6d4"></span>Test</span>
+    </div>
+    <div class="ph-bars">
+      <div class="ph-row">
+        <span class="ph-lbl">Förr</span>
+        <div class="ph-track">
+          <div class="ph-seg" style="flex:10;background:#8b5cf6"></div>
+          <div class="ph-seg" style="flex:5;background:#3b82f6"></div>
+          <div class="ph-seg" style="flex:50;background:#da9926"><span>Implementation</span></div>
+          <div class="ph-seg" style="flex:20;background:#10b981"><span>Review</span></div>
+          <div class="ph-seg" style="flex:5;background:#06b6d4"></div>
+          <div class="ph-seg" style="flex:10;background:rgba(0,0,0,0.07)"></div>
+        </div>
+      </div>
+      <div class="ph-row">
+        <span class="ph-lbl">Nu</span>
+        <div class="ph-track">
+          <div class="ph-seg" style="flex:10;background:#3b82f6"></div>
+          <div class="ph-seg" style="flex:10;background:#da9926"></div>
+          <div class="ph-seg" style="flex:10;background:#10b981"></div>
+          <div class="ph-seg" style="flex:10;background:#06b6d4"></div>
+          <div class="ph-seg" style="flex:10;background:#3b82f6"></div>
+          <div class="ph-seg" style="flex:10;background:#da9926"></div>
+          <div class="ph-seg" style="flex:10;background:#10b981"></div>
+          <div class="ph-seg" style="flex:10;background:#06b6d4"></div>
+          <div class="ph-seg" style="flex:10;background:#da9926"></div>
+          <div class="ph-seg" style="flex:10;background:#06b6d4"></div>
+        </div>
+      </div>
+      <div class="ph-row">
+        <span class="ph-lbl">Mål</span>
+        <div class="ph-track">
+          <div class="ph-seg" style="flex:40;background:#3b82f6"><span>Planering</span></div>
+          <div class="ph-seg" style="flex:10;background:#da9926"><span>Impl.</span></div>
+          <div class="ph-seg" style="flex:20;background:#10b981"><span>Review</span></div>
+          <div class="ph-seg" style="flex:30;background:#06b6d4"><span>Test</span></div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">10 / 10</span>
   </section>
 
 </main>
@@ -644,7 +754,7 @@
   let   current  = 0;
 
   // Slide background colors in order — body bg syncs to previous slide's color
-  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef'];
+  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff'];
 
   const dots = sections.map((_, i) => {
     const d = document.createElement('button');
