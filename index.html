@@ -249,6 +249,33 @@
     /* ── Explainer text ── */
     .explain { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
 
+    /* ── Meme slides ── */
+    .meme {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .meme-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    .meme-frame {
+      border: 2px dashed var(--acc-bd);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      max-width: 32rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
     /* ── Nav dots ── */
     #dots {
       position: fixed;
@@ -297,9 +324,9 @@
   <!-- 1 ── HERO -->
   <section id="hero">
     <p class="eyebrow">Camfil · Agentisk Utveckling · 2026</p>
-    <h1>Hur vi jobbar<br>med <em>AI-agenter</em><br>i praktiken</h1>
+    <h1>Hur vi bygger<br><em>AI-agenter</em><br>med AI-agenter</h1>
     <p class="hero-sub">Automatisering med agentdrivna arbetsflöden och hur vi jobbar</p>
-    <span class="ctr">01 / 07</span>
+    <span class="ctr">01 / 09</span>
   </section>
 
   <!-- 2 ── VAD VI BYGGER -->
@@ -307,36 +334,35 @@
     <p class="slide-label">Systemet</p>
     <h2>Vad vi bygger</h2>
     <div class="flow" style="margin-bottom:1.25rem">
-      <span class="fn">Inkorg</span>
+      <span class="fn">Mailbox</span>
       <span class="fa">→</span>
       <span class="fn">Logic Apps</span>
       <span class="fa">→</span>
-      <span class="fn">Azure Service</span>
+      <span class="fn">LangGraph-tjänst</span>
       <span class="fa">→</span>
       <span class="fn">ERP</span>
     </div>
     <div class="cols cols-2">
       <div class="card">
-        <p class="card-label">Mail-to-Order</p>
-        <ul class="pts">
-          <li>Läser inkorgar och tolkar inkommande order-mail</li>
-          <li>Skapar offerter och säljordrar automatiskt</li>
-          <li>Hanterar tolkningsfall och undantag</li>
-          <li>Kräver mänsklig verifiering innan order bekräftas</li>
-        </ul>
-      </div>
-      <div class="card">
         <p class="card-label">Chat-Agent</p>
         <ul class="pts">
-          <li>Hanterar övriga kundfrågor och statusförfrågningar</li>
+          <li>Hanterar kundfrågor och statusförfrågningar</li>
           <li>Söker i ordrar, produkter och kundinformation</li>
-          <li>Fallback för mail utanför M2O-flödet</li>
           <li>Outlook add-in för direkt åtkomst i mejlklienten</li>
           <li>HITL-bekräftelse för att konvertera svar till offert</li>
         </ul>
       </div>
+      <div class="card">
+        <p class="card-label">Mail-to-Order</p>
+        <ul class="pts">
+          <li>Tolkar mejlbilagor med Document Intelligence</li>
+          <li>Söker kund och produkter och graderar matchningen</li>
+          <li>Skapar offerter och säljordrar automatiskt</li>
+          <li>Kräver mänsklig verifiering innan order bekräftas</li>
+        </ul>
+      </div>
     </div>
-    <span class="ctr">02 / 07</span>
+    <span class="ctr">02 / 09</span>
   </section>
 
   <!-- 3 ── ARKITEKTUR -->
@@ -344,53 +370,118 @@
     <p class="slide-label">Teknik</p>
     <h2>Arkitektur & Integration</h2>
     <div style="margin-bottom:1.1rem">
-      <p style="font-size:0.65rem;color:var(--accent);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Dataflöde</p>
+      <p style="font-size:0.65rem;color:var(--accent);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Inläsning (sök)</p>
       <div class="flow">
         <span class="fn">ERP-system</span>
         <span class="fa">→</span>
         <span class="fn">Microsoft Fabric</span>
         <span class="fa">→</span>
-        <span class="fn">Sökindex</span>
+        <span class="fn">Azure Search</span>
       </div>
       <div class="tags">
         <span class="tag t">Ordrar</span>
         <span class="tag t">Produkter</span>
         <span class="tag t">Kunder</span>
-        <span class="tag">AMER</span>
         <span class="tag">EMEA</span>
+        <span class="tag">AMER</span>
+        <span class="tag">APAC</span>
       </div>
     </div>
-    <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner</p>
+    <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner. Orderexport går tillbaka per ERP, på olika sätt</p>
     <div class="stack">
-        <div class="card">
-          <div class="card-head">
-            <p class="card-label">Varnet</p>
-            <span class="tag">Kanada</span>
-            <span class="tag">AMER</span>
-          </div>
-          <p class="bd">Filbaserad integration</p>
-        </div>
-        <div class="card">
-          <div class="card-head">
-            <p class="card-label">MacPac</p>
-            <span class="tag">USA</span>
-            <span class="tag">AMER</span>
-          </div>
-          <p class="bd">Filbaserad integration</p>
-        </div>
         <div class="card">
           <div class="card-head">
             <p class="card-label">Dynamics 365</p>
             <span class="tag">Europa</span>
             <span class="tag">EMEA</span>
           </div>
-          <p class="bd">Direkta DB-queries</p>
+          <p class="bd">Orderexport via Azure API Management</p>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">MacPac</p>
+            <span class="tag">USA + Kanada</span>
+            <span class="tag">AMER</span>
+          </div>
+          <p class="bd">Filbaserad orderexport</p>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">Varnet</p>
+            <span class="tag">APAC</span>
+          </div>
+          <p class="bd">Orderexport via SalesOrders REST API</p>
         </div>
     </div>
-    <span class="ctr">03 / 07</span>
+    <span class="ctr">03 / 09</span>
   </section>
 
-  <!-- 4 ── AGENTDRIVET ARBETSSÄTT -->
+  <!-- 4 ── MEME: WINDOWS -->
+  <section id="windows">
+    <div class="meme">
+      <h2 class="meme-title">Windows</h2>
+      <div class="meme-frame">
+        <!-- TODO: ersätt med bild av 90-talsnörd, tjocka glasögon, grå dator, mammas källare -->
+        <p>🖼 Bild: 90-talsnörd med tjocka glasögon framför en grå dator i mammas källare</p>
+      </div>
+    </div>
+    <span class="ctr">04 / 09</span>
+  </section>
+
+  <!-- 5 ── MEME: WSL -->
+  <section id="wsl">
+    <div class="meme">
+      <h2 class="meme-title">WSL</h2>
+      <div class="meme-frame">
+        <!-- TODO: ersätt med bild av Hackerman som drar på sin powerglove -->
+        <p>🖼 Bild: Hackerman drar på sin powerglove</p>
+      </div>
+    </div>
+    <span class="ctr">05 / 09</span>
+  </section>
+
+  <!-- 6 ── PRODUKTION & MONITORERING -->
+  <section id="produktion">
+    <p class="slide-label">Produktion</p>
+    <h2>Monitorering & Produktionsdata</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">👁</div>
+          <div>
+            <p class="bt">App Insights</p>
+            <p class="bd">Direkta queries mot telemetri, traces och loggar</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">📊</div>
+          <div>
+            <p class="bt">Microsoft Fabric</p>
+            <p class="bd">Analytics, datakvalitet och pipeline-status</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🗄</div>
+          <div>
+            <p class="bt">Läsåtkomst till prod-DB</p>
+            <p class="bd">Direkta queries för diagnos och validering</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🔁</div>
+          <div>
+            <p class="bt">Produktionsdata</p>
+            <p class="bd">Anrop mot API och Logic Apps för att trigga om workflows. Medvetet svag retry-hantering, enklare att städa upp det som inte startat än det som körts 100 gånger för mycket</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">06 / 09</span>
+  </section>
+
+  <!-- 7 ── AGENTDRIVET ARBETSSÄTT -->
   <section id="arbetsprocess">
     <p class="slide-label">Arbetssätt</p>
     <h2>Agentdriven arbetsprocess</h2>
@@ -434,15 +525,15 @@
           <div class="bicon">🧪</div>
           <div>
             <p class="bt">Testskills</p>
-            <p class="bd">docker-compose.worktree + e2e/api-tester innan PR</p>
+            <p class="bd">E2E- och subgraph-tester lokalt, mot en live LLM</p>
           </div>
         </div>
       </div>
     </div>
-    <span class="ctr">04 / 07</span>
+    <span class="ctr">07 / 09</span>
   </section>
 
-  <!-- 5 ── LOKALA SUPERKRAFTER -->
+  <!-- 8 ── LOKALA SUPERKRAFTER -->
   <section id="superkrafter">
     <p class="slide-label">Miljö</p>
     <h2>Lokala superkrafter</h2>
@@ -452,7 +543,14 @@
           <div class="bicon">🧪</div>
           <div>
             <p class="bt">TDD + coding-subagents</p>
-            <p class="bd">Testdriven implementation. /langgraph-fundamentals + graphify hittar och indexerar i kodbasen</p>
+            <p class="bd">Testdriven implementation med dedikerade coding-subagents</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">📚</div>
+          <div>
+            <p class="bt">Best practices & discovery</p>
+            <p class="bd">/langgraph-fundamentals + graphify hittar och indexerar i kodbasen</p>
           </div>
         </div>
         <div class="brow">
@@ -467,7 +565,7 @@
         <div class="brow">
           <div class="bicon">🔍</div>
           <div>
-            <p class="bt">Codereview & simplify-skills</p>
+            <p class="bt">/code-review & /simplify</p>
             <p class="bd">En uppsjö av skills som granskar och förenklar kod innan den når en människa</p>
           </div>
         </div>
@@ -480,61 +578,20 @@
         </div>
       </div>
     </div>
-    <span class="ctr">05 / 07</span>
+    <span class="ctr">08 / 09</span>
   </section>
 
-  <!-- 6 ── PRODUKTION & MONITORERING -->
-  <section id="produktion">
-    <p class="slide-label">Produktion</p>
-    <h2>Monitorering & Produktionsdata</h2>
-    <div class="cols cols-2">
-      <div class="brows">
-        <div class="brow">
-          <div class="bicon">👁</div>
-          <div>
-            <p class="bt">App Insights</p>
-            <p class="bd">Direkta queries mot telemetri, traces och loggar</p>
-          </div>
-        </div>
-        <div class="brow">
-          <div class="bicon">📊</div>
-          <div>
-            <p class="bt">Microsoft Fabric</p>
-            <p class="bd">Analytics, datakvalitet och pipeline-status</p>
-          </div>
-        </div>
-      </div>
-      <div class="brows">
-        <div class="brow">
-          <div class="bicon">🗄</div>
-          <div>
-            <p class="bt">Läsåtkomst till prod-DB</p>
-            <p class="bd">Direkta queries för diagnos och validering</p>
-          </div>
-        </div>
-        <div class="brow">
-          <div class="bicon">🔐</div>
-          <div>
-            <p class="bt">Produktionsdata</p>
-            <p class="bd">Vad får agenten se? Vad får den göra?</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <span class="ctr">06 / 07</span>
-  </section>
-
-  <!-- 7 ── INSIKTER -->
+  <!-- 9 ── INSIKTER -->
   <section id="insikter">
     <p class="slide-label">Insikter</p>
     <h2>Vad vi lärt oss</h2>
     <div class="cols cols-2">
-      <div class="brows">
+      <div class="brows" style="gap:0.85rem">
         <div class="brow">
           <div class="bicon">🔄</div>
           <div>
             <p class="bt">Självförbättrande workflow</p>
-            <p class="bd">/insights för att plocka bra bitar. Gör skills av upprepade uppgifter och träna agenten att undvika återkommande misstag</p>
+            <p class="bd">Konvertera rutinarbete i sessionen till skills. /insights med jämna mellanrum fångar mönster och städar upp</p>
           </div>
         </div>
         <div class="brow">
@@ -544,25 +601,46 @@
             <p class="bd">Allt som scriptas sparar pengar. Varje gång Claude gör om ett misstag kostar det. Jämför med kollegor som klickar igenom samma flöde gång på gång</p>
           </div>
         </div>
-      </div>
-      <div class="brows">
         <div class="brow">
           <div class="bicon">🖥</div>
           <div>
             <p class="bt">Never touch UI again</p>
-            <p class="bd">Bra MCP/CLI ersätter webb-UI mer eller mindre 100%. Snabbare, skriptbart, reproducerbart.</p>
+            <p class="bd">Bra MCP/CLI ersätter webb-UI mer eller mindre 100%. Snabbare, skriptbart, reproducerbart</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">🔑</div>
           <div>
             <p class="bt">Ge Claude egna behörigheter</p>
-            <p class="bd">PAT till GitHub/DevOps etc. Claude frikopplad från din session med egna åtkomstnycklar. Eller obegränsade. YOLO.</p>
+            <p class="bd">PAT till GitHub/DevOps etc. Claude frikopplad från din session med egna åtkomstnycklar. Eller obegränsade. YOLO</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows" style="gap:0.85rem">
+        <div class="brow">
+          <div class="bicon">🤝</div>
+          <div>
+            <p class="bt">Mindre kontroll, bättre resultat</p>
+            <p class="bd">Styrda flöden fastnar. Fria tool-calling-supervisors löser problem själva</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">⚡</div>
+          <div>
+            <p class="bt">Parallellism kan vara billigare</p>
+            <p class="bd">Fler onödiga anrop, men färre agent-turns. Totalt billigare</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🧹</div>
+          <div>
+            <p class="bt">#lintmaxxing</p>
+            <p class="bd">Alla lint-regler på. Tvingar fram enklare och tydligare kod</p>
           </div>
         </div>
       </div>
     </div>
-    <span class="ctr">07 / 07</span>
+    <span class="ctr">09 / 09</span>
   </section>
 
 </main>
@@ -574,7 +652,7 @@
   let   current  = 0;
 
   // Slide background colors in order — body bg syncs to previous slide's color
-  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef'];
+  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef'];
 
   const dots = sections.map((_, i) => {
     const d = document.createElement('button');
