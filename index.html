@@ -312,6 +312,28 @@
 
     section:first-child .ctr { color: rgba(238,238,255,0.2); }
 
+    /* ── Tooltip on brow items ── */
+    .brow-tip { position: relative; }
+    .brow-tip::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 0.4rem);
+      left: 0;
+      background: rgba(13,13,30,0.93);
+      color: #eeeeff;
+      padding: 0.55em 0.8em;
+      border-radius: 10px;
+      font-size: 0.55rem;
+      line-height: 1.5;
+      width: 18rem;
+      max-width: 90vw;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 50;
+    }
+    .brow-tip:hover::after { opacity: 1; }
+
     /* ── Insikter slide spacing overrides (8 items need tighter fit at 720p) ── */
     #insikter .brows { gap: 0.15rem; }
     #insikter h2 { margin-bottom: 0.35rem; }
@@ -696,7 +718,7 @@
             <p class="bd">PAT till GitHub/DevOps. Frikopplat, lättare att auditera</p>
           </div>
         </div>
-        <div class="brow">
+        <div class="brow brow-tip" data-tip="Kontexthoarding: långa sessioner kompakterade flera gånger är samma mönster som tab-hoardaren. Man tänker och far för fort för att stanna upp och andas. Resultaten lider på samma sätt.">
           <div class="bicon">🗂️</div>
           <div>
             <p class="bt">Kontext = 100 tabbar</p>
