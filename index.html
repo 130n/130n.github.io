@@ -412,16 +412,16 @@
         <ul class="pts">
           <li>Hanterar kundfrågor och statusförfrågningar</li>
           <li>Söker i ordrar, produkter och kundinformation</li>
-          <li>Outlook add-in för direkt åtkomst i mejlklienten</li>
-          <li>HITL-bekräftelse för att konvertera svar till offert</li>
+          <li>Outlook/mailbox-integration, taggar som AI Quote</li>
+          <li>HITL-bekräftelse för att konvertera offert till order</li>
         </ul>
       </div>
       <div class="card">
         <p class="card-label">Mail-to-Order</p>
         <ul class="pts">
           <li>Tolkar mejlbilagor med Document Intelligence</li>
-          <li>Söker kund och produkter och graderar matchningen</li>
-          <li>Skapar offerter och säljordrar automatiskt</li>
+          <li>Matchar kunder/produkter och graderar träffsäkerheten</li>
+          <li>Förbereder PO/RFQ-underlag och skickar godkänt till ERP</li>
           <li>Kräver mänsklig verifiering innan order bekräftas</li>
         </ul>
       </div>
@@ -450,7 +450,7 @@
         <span class="tag">AMER</span>
       </div>
     </div>
-    <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner. Orderexport går tillbaka per ERP, på olika sätt</p>
+    <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner. Orderexport sker per ERP, med olika integrationssätt</p>
     <div class="stack">
         <div class="card">
           <div class="card-head">
@@ -508,7 +508,7 @@
           <div class="bicon">👁</div>
           <div>
             <p class="bt">App Insights</p>
-            <p class="bd">Direkta queries mot telemetri, traces och loggar</p>
+            <p class="bd">Direkta frågor mot telemetri, traces och loggar</p>
           </div>
         </div>
         <div class="brow">
@@ -524,14 +524,14 @@
           <div class="bicon">🗄</div>
           <div>
             <p class="bt">Läsåtkomst till prod-DB</p>
-            <p class="bd">Direkta queries för diagnos och validering</p>
+            <p class="bd">Direkta frågor för diagnos och validering</p>
           </div>
         </div>
         <div class="brow">
           <div class="bicon">🔁</div>
           <div>
             <p class="bt">Produktionsdata</p>
-            <p class="bd">Anrop mot API och Logic Apps för att trigga om workflows. Medvetet svag retry-hantering, enklare att städa upp det som inte startat än det som körts 100 gånger för mycket</p>
+            <p class="bd">Anrop mot API och Logic Apps för kontrollerad omkörning. Konservativ retry-strategi minskar risken för dubbletter</p>
           </div>
         </div>
       </div>
@@ -567,7 +567,7 @@
           <div class="bicon">⌥</div>
           <div>
             <p class="bt">Worktree + tmux</p>
-            <p class="bd">Egen branch och session per uppgift, flera agenter i parallell</p>
+            <p class="bd">Egen branch och session per uppgift, flera agenter parallellt</p>
           </div>
         </div>
       </div>
@@ -624,7 +624,7 @@
           <div class="bicon">🔍</div>
           <div>
             <p class="bt">/code-review & /simplify</p>
-            <p class="bd">En uppsjö av skills som granskar och förenklar kod innan den når en människa</p>
+            <p class="bd">Flera skills som granskar och förenklar kod innan den når en människa</p>
           </div>
         </div>
         <div class="brow">
@@ -692,8 +692,8 @@
         <div class="brow">
           <div class="bicon">🔑</div>
           <div>
-            <p class="bt">Ge Claude egna behörigheter</p>
-            <p class="bd">PAT till GitHub/DevOps, frikopplat från min session. YOLO</p>
+            <p class="bt">Ge agenten egna behörigheter</p>
+            <p class="bd">PAT till GitHub/DevOps. Frikopplat, lättare att auditera</p>
           </div>
         </div>
         <div class="brow">
