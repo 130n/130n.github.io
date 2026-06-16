@@ -148,6 +148,16 @@
       box-shadow: 0 1px 3px rgba(13,13,30,0.07), 0 0 0 1px rgba(13,13,30,0.05);
     }
 
+    .card-head {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .card-head .card-label { margin-bottom: 0; }
+
     .card-label {
       font-size: 0.62rem;
       font-weight: 700;
@@ -353,28 +363,28 @@
     <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner</p>
     <div class="stack">
         <div class="card">
-          <p class="card-label">Varnet</p>
-          <ul class="pts">
-            <li>AMER, Kanada</li>
-            <li>Äldre affärssystem</li>
-            <li>REST-anrop mot tjänster</li>
-          </ul>
+          <div class="card-head">
+            <p class="card-label">Varnet</p>
+            <span class="tag">Kanada</span>
+            <span class="tag">AMER</span>
+          </div>
+          <p class="bd">Filbaserad integration</p>
         </div>
         <div class="card">
-          <p class="card-label">MacPac</p>
-          <ul class="pts">
-            <li>AMER, USA</li>
-            <li>Äldre affärssystem</li>
-            <li>REST-anrop mot tjänster</li>
-          </ul>
+          <div class="card-head">
+            <p class="card-label">MacPac</p>
+            <span class="tag">USA</span>
+            <span class="tag">AMER</span>
+          </div>
+          <p class="bd">Filbaserad integration</p>
         </div>
         <div class="card">
-          <p class="card-label">Dynamics 365</p>
-          <ul class="pts">
-            <li>EMEA, Europa</li>
-            <li>Microsofts molnbaserade ERP</li>
-            <li>Direkta DB-queries</li>
-          </ul>
+          <div class="card-head">
+            <p class="card-label">Dynamics 365</p>
+            <span class="tag">Europa</span>
+            <span class="tag">EMEA</span>
+          </div>
+          <p class="bd">Direkta DB-queries</p>
         </div>
     </div>
     <span class="ctr">03 / 07</span>
