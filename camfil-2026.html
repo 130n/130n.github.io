@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentisk Utveckling @ Camfil</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="presentation.css">
+  <style>
+    /* Innehållsspecifika overrides för denna presentation */
+    /* ── Insikter slide: 3-col tighter fit at 720p ── */
+    #insikter .brows { gap: 0.65rem; }
+    #insikter h2 { margin-bottom: 0.3rem; }
+    #insikter .slide-label { margin-bottom: 0.12rem; }
+    #insikter .bt { font-size: 0.82rem; }
+    #insikter .bd { font-size: 0.72rem; }
+    #insikter .bicon { width: 1.2rem; height: 1.2rem; font-size: 0.72rem; }
+    #insikter .brow { gap: 0.4rem; }
+  </style>
+</head>
+<body>
+
+<nav id="dots" aria-label="Navigering"></nav>
+
+<main id="scroll">
+
+  <!-- 1 ── HERO -->
+  <section id="hero">
+    <p class="eyebrow">Camfil · Agentisk Utveckling · 2026</p>
+    <h1>Hur vi bygger<br><em>AI-agenter</em><br>med AI-agenter</h1>
+    <p class="hero-sub">Automatisering med agentdrivna arbetsflöden och hur vi jobbar</p>
+    <div class="hero-qr">
+      <img src="assets/qr.svg" alt="QR-kod till presentationen">
+      <span>Skanna och följ med</span>
+    </div>
+    <span class="ctr">01 / 10</span>
+  </section>
+
+  <!-- 2 ── VAD VI BYGGER -->
+  <section id="system">
+    <p class="slide-label">Systemet</p>
+    <h2>Vad vi bygger</h2>
+    <div class="flow" style="margin-bottom:1.25rem">
+      <span class="fn">Mailbox</span>
+      <span class="fa">→</span>
+      <span class="fn">Logic Apps</span>
+      <span class="fa">→</span>
+      <span class="fn">LangGraph-tjänst</span>
+      <span class="fa">→</span>
+      <span class="fn">ERP</span>
+    </div>
+    <div class="cols cols-2">
+      <div class="card">
+        <p class="card-label">Chat-Agent</p>
+        <ul class="pts">
+          <li>Hanterar kundfrågor och statusförfrågningar</li>
+          <li>Söker i ordrar, produkter och kundinformation</li>
+          <li>Outlook/mailbox-integration, taggar som AI Quote</li>
+          <li>HITL-bekräftelse för att konvertera offert till order</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">Mail-to-Order</p>
+        <ul class="pts">
+          <li>Tolkar mejlbilagor med Document Intelligence</li>
+          <li>Matchar kunder/produkter och graderar träffsäkerheten</li>
+          <li>Förbereder PO/RFQ-underlag och skickar godkända resultat till ERP</li>
+          <li>Kräver mänsklig verifiering innan order bekräftas</li>
+        </ul>
+      </div>
+    </div>
+    <span class="ctr">02 / 10</span>
+  </section>
+
+  <!-- 3 ── ARKITEKTUR -->
+  <section id="arkitektur">
+    <p class="slide-label">Teknik</p>
+    <h2>Arkitektur & Integration</h2>
+    <div style="margin-bottom:0.6rem">
+      <p style="font-size:0.65rem;color:var(--accent);font-weight:700;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.4rem">Inläsning (sök)</p>
+      <div class="flow">
+        <span class="fn">ERP-system</span>
+        <span class="fa">→</span>
+        <span class="fn">Microsoft Fabric</span>
+        <span class="fa">→</span>
+        <span class="fn">Azure Search</span>
+      </div>
+      <div class="tags">
+        <span class="tag t">Ordrar</span>
+        <span class="tag t">Produkter</span>
+        <span class="tag t">Kunder</span>
+        <span class="tag">EMEA</span>
+        <span class="tag">AMER</span>
+      </div>
+    </div>
+    <p class="explain">ERP är affärssystem som hanterar ordrar, lager och kunddata hos Camfils bolag i olika regioner. Orderexport sker per ERP, med olika integrationssätt</p>
+    <div class="stack">
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">Dynamics 365</p>
+            <span class="tag">Europa</span>
+            <span class="tag">EMEA</span>
+          </div>
+          <p class="bd">Orderexport via Azure API Management</p>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">MacPac</p>
+            <span class="tag">USA</span>
+            <span class="tag">AMER</span>
+          </div>
+          <p class="bd">Filbaserad orderexport</p>
+        </div>
+        <div class="card">
+          <div class="card-head">
+            <p class="card-label">Varnet</p>
+            <span class="tag">Kanada</span>
+            <span class="tag">AMER</span>
+          </div>
+          <p class="bd">Orderexport via SalesOrders REST API</p>
+        </div>
+    </div>
+    <span class="ctr">03 / 10</span>
+  </section>
+
+  <!-- 4 ── MEME: WINDOWS -->
+  <section id="windows">
+    <div class="meme">
+      <h2 class="meme-title">Windows</h2>
+      <img class="meme-img" src="assets/windows-nerd.jpg" alt="90-talsnörd vid en gammal dator i källaren">
+    </div>
+    <span class="ctr">04 / 10</span>
+  </section>
+
+  <!-- 5 ── MEME: WSL -->
+  <section id="wsl">
+    <div class="meme">
+      <h2 class="meme-title">WSL</h2>
+      <img class="meme-img" src="assets/hackerman-powerglove.jpg" alt="Hackerman drar på sin powerglove">
+    </div>
+    <span class="ctr">05 / 10</span>
+  </section>
+
+  <!-- 6 ── PRODUKTION & MONITORERING -->
+  <section id="produktion">
+    <p class="slide-label">Produktion</p>
+    <h2>Monitorering & Produktionsdata</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">👁</div>
+          <div>
+            <p class="bt">App Insights</p>
+            <p class="bd">Direkta frågor mot telemetri, traces och loggar</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">📊</div>
+          <div>
+            <p class="bt">Microsoft Fabric</p>
+            <p class="bd">Analytics, datakvalitet och pipeline-status</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🗄</div>
+          <div>
+            <p class="bt">Läsåtkomst till prod-DB</p>
+            <p class="bd">Direkta frågor för diagnos och validering</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🔁</div>
+          <div>
+            <p class="bt">Produktionsdata</p>
+            <p class="bd">Anrop mot API och Logic Apps för kontrollerad omkörning. Konservativ retry-strategi minskar risken för dubbletter</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">06 / 10</span>
+  </section>
+
+  <!-- 7 ── AGENTDRIVET ARBETSSÄTT -->
+  <section id="arbetsprocess">
+    <p class="slide-label">Arbetssätt</p>
+    <h2>Agentdriven arbetsprocess</h2>
+    <div class="flow" style="margin-bottom:1.25rem">
+      <span class="fn">DevOps MCP</span>
+      <span class="fa">→</span>
+      <span class="fn">Worktree + tmux</span>
+      <span class="fa">→</span>
+      <span class="fn">Design / plan</span>
+      <span class="fa">→</span>
+      <span class="fn">Kod</span>
+      <span class="fa">→</span>
+      <span class="fn">Testskills</span>
+    </div>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🗂</div>
+          <div>
+            <p class="bt">DevOps MCP</p>
+            <p class="bd">Agenten hämtar och uppdaterar tasks direkt, utan att lämna terminalen</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">⌥</div>
+          <div>
+            <p class="bt">Worktree + tmux</p>
+            <p class="bd">Egen branch och session per uppgift, flera agenter parallellt</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🧭</div>
+          <div>
+            <p class="bt">Design / plan</p>
+            <p class="bd">Agenten skissar lösningen innan koden skrivs</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🧪</div>
+          <div>
+            <p class="bt">Testskills</p>
+            <p class="bd">E2E- och subgraph-tester lokalt, mot en live LLM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">07 / 10</span>
+  </section>
+
+  <!-- 8 ── LOKALA SUPERKRAFTER -->
+  <section id="superkrafter">
+    <p class="slide-label">Miljö</p>
+    <h2>Lokala superkrafter</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🧪</div>
+          <div>
+            <p class="bt">TDD + coding-subagents</p>
+            <p class="bd">Testdriven implementation med dedikerade coding-subagents</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">📚</div>
+          <div>
+            <p class="bt">Best practices & discovery</p>
+            <p class="bd">/langgraph-fundamentals + <a href="https://github.com/safishamsi/graphify" target="_blank" class="ext">graphify ↗</a> hittar och indexerar i kodbasen</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🌐</div>
+          <div>
+            <p class="bt">Chrome MCP</p>
+            <p class="bd">Agenten kör webbläsaren själv, browsertestning utan manuella steg</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🔍</div>
+          <div>
+            <p class="bt">/code-review & /simplify</p>
+            <p class="bd">Flera skills som granskar och förenklar kod innan den når en människa</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">✅</div>
+          <div>
+            <p class="bt">/pr-ready</p>
+            <p class="bd">Stämmer av mot issue och acceptanskriterier, lintar, testar, skapar PR med mall och tilldelar reviewers</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">08 / 10</span>
+  </section>
+
+  <!-- 9 ── INSIKTER -->
+  <section id="insikter">
+    <p class="slide-label">Insikter</p>
+    <h2>Vad vi lärt oss</h2>
+    <div class="cols cols-3">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">💸</div>
+          <div>
+            <p class="bt">Äntligen lönsamt att optimera</p>
+            <p class="bd">Det som scriptas sparar pengar. Manuellt klickande gör det inte</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🤝</div>
+          <div>
+            <p class="bt">Mindre kontroll, bättre resultat</p>
+            <p class="bd">Styrda flöden fastnar. Fria supervisors löser det</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">⚡</div>
+          <div>
+            <p class="bt">Parallellism kan vara billigare</p>
+            <p class="bd">Fler anrop men färre agent-turns. Totalt billigare</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🧹</div>
+          <div>
+            <p class="bt">#lintmaxxing</p>
+            <p class="bd">Alla lint-regler på. Tvingar fram enklare kod</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🔄</div>
+          <div>
+            <p class="bt">Självförbättrande workflow</p>
+            <p class="bd">Skills för rutinarbete. /insights fångar mönster</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">🖥</div>
+          <div>
+            <p class="bt">Never touch UI again</p>
+            <p class="bd">Bra MCP/CLI ersätter webb-UI. Snabbare och reproducerbart</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">🔑</div>
+          <div>
+            <p class="bt">Ge agenten egna behörigheter</p>
+            <p class="bd">PAT till GitHub/DevOps. Frikopplat, lättare att auditera</p>
+          </div>
+        </div>
+        <div class="brow brow-tip" data-tip="Kontexthoarding: långa sessioner kompakterade flera gånger är samma mönster som tab-hoardaren. Man tänker och far för fort för att stanna upp och andas. Resultaten lider på samma sätt.">
+          <div class="bicon">🗂️</div>
+          <div>
+            <p class="bt">Kontext = 100 tabbar</p>
+            <p class="bd">Degraderar precision, komprimera rutinmässigt</p>
+          </div>
+        </div>
+        <div class="brow brow-tip" data-tip="Bra format men vår användning var optimistisk: dynamiska projektioner och AI-styrda fält innebär att hela schemat måste in i kontext up front. Dyrt för varje anrop.">
+          <div class="bicon">📐</div>
+          <div>
+            <p class="bt">TOON <a href="https://github.com/toon-format/toon" target="_blank" class="ext">gh ↗</a></p>
+            <p class="bd">Hela schemat i kontext up front. Dyrt för dynamiska projektioner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">09 / 10</span>
+  </section>
+
+  <!-- 10 ── PHASE VISUALIZATION -->
+  <section id="workflow">
+    <p class="slide-label">Insikter</p>
+    <h2>Var formas förståelsen?</h2>
+    <div class="ph-legend">
+      <span><span class="ph-dot" style="background:#8b5cf6"></span>Spec</span>
+      <span><span class="ph-dot" style="background:#3b82f6"></span>Planering</span>
+      <span><span class="ph-dot" style="background:#da9926"></span>Implementation</span>
+      <span><span class="ph-dot" style="background:#10b981"></span>Review</span>
+      <span><span class="ph-dot" style="background:#06b6d4"></span>Test</span>
+    </div>
+    <div class="ph-bars">
+      <div class="ph-row">
+        <span class="ph-lbl">Förr</span>
+        <div class="ph-col">
+          <div class="ph-track">
+            <div class="ph-seg" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"></div>
+            <div class="ph-seg" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg ph-hi" data-pct="Implementation · 50%" style="flex:50;background:#da9926"><span>Implementation</span></div>
+            <div class="ph-seg" data-pct="Review · 20%" style="flex:20;background:#10b981"><span>Review</span></div>
+            <div class="ph-seg" data-pct="Test · 10%" style="flex:10;background:#06b6d4"></div>
+          </div>
+          <p class="ph-note">Du kodar och lär dig om lösningen samtidigt</p>
+        </div>
+      </div>
+      <div class="ph-row">
+        <span class="ph-lbl">Nu</span>
+        <div class="ph-col">
+          <div class="ph-track">
+            <div class="ph-seg ph-hi" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 10%" style="flex:10;background:#10b981"></div>
+            <div class="ph-seg" data-pct="Test · 10%" style="flex:10;background:#06b6d4"></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 10%" style="flex:10;background:#10b981"></div>
+            <div class="ph-seg" data-pct="Implementation · 5%" style="flex:5;background:#da9926"></div>
+            <div class="ph-seg" data-pct="Test · 5%" style="flex:5;background:#06b6d4"></div>
+          </div>
+          <p class="ph-note">Planering = du formulerar avsikten. Impl = svart låda. Review = du betalar för otydligheten</p>
+        </div>
+      </div>
+      <div class="ph-row">
+        <span class="ph-lbl">Mål</span>
+        <div class="ph-col">
+          <div class="ph-track">
+            <div class="ph-seg ph-hi" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"><span>Spec</span></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 30%" style="flex:30;background:#3b82f6"><span>Planering</span></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"><span>Impl.</span></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 35%" style="flex:35;background:#10b981"><span>Review</span></div>
+            <div class="ph-seg" data-pct="Test · 15%" style="flex:15;background:#06b6d4"><span>Test</span></div>
+          </div>
+          <p class="ph-note">Förståelsen kräver djup planering. Review validerar att avsikten landade rätt</p>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">10 / 10</span>
+  </section>
+
+</main>
+
+<script>
+  const sections = [...document.querySelectorAll('section')];
+  const nav      = document.getElementById('dots');
+  const N        = sections.length;
+  let   current  = 0;
+
+  // Slide background colors in order — body bg syncs to previous slide's color
+  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff'];
+
+  const dots = sections.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'Bild ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    nav.appendChild(d);
+    return d;
+  });
+
+  function goTo(i) { sections[i].scrollIntoView({ behavior: 'smooth' }); }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        const i = sections.indexOf(e.target);
+        if (i >= 0) {
+          current = i;
+          dots.forEach((d, j) => d.classList.toggle('on', j === i));
+          document.body.style.backgroundColor = slideBgs[Math.max(0, i - 1)];
+          history.replaceState(null, '', '#' + e.target.id);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // Restore position from URL hash on load
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'instant' }), 0);
+  }
+
+  document.addEventListener('keydown', e => {
+    const fwd = e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ';
+    const bck = e.key === 'ArrowUp'   || e.key === 'PageUp';
+    if (fwd) { e.preventDefault(); goTo(Math.min(current + 1, N - 1)); }
+    if (bck) { e.preventDefault(); goTo(Math.max(current - 1, 0)); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End')  { e.preventDefault(); goTo(N - 1); }
+  });
+
+  // Phase bar segment tooltips
+  const phTip = document.createElement('div');
+  Object.assign(phTip.style, {
+    position: 'fixed', pointerEvents: 'none', opacity: '0',
+    background: 'rgba(13,13,30,0.93)', color: '#eeeeff',
+    padding: '0.25em 0.6em', borderRadius: '6px',
+    fontSize: '0.7rem', fontWeight: '600', letterSpacing: '0.06em',
+    transition: 'opacity 0.1s', zIndex: '200', whiteSpace: 'nowrap',
+  });
+  document.body.appendChild(phTip);
+
+  document.querySelectorAll('.ph-seg[data-pct]').forEach(seg => {
+    seg.addEventListener('mouseenter', () => {
+      phTip.textContent = seg.dataset.pct;
+      phTip.style.opacity = '1';
+      const r = seg.getBoundingClientRect();
+      phTip.style.left = Math.round(r.left + r.width / 2 - phTip.offsetWidth / 2) + 'px';
+      phTip.style.top  = Math.round(r.bottom + 6) + 'px';
+    });
+    seg.addEventListener('mouseleave', () => { phTip.style.opacity = '0'; });
+  });
+</script>
+
+</body>
+</html>

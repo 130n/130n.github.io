@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentationsmall</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="presentation.css">
+</head>
+<body>
+
+<nav id="dots" aria-label="Navigering"></nav>
+
+<main id="scroll">
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: TITELSIDA (hero)
+       Mörk bakgrund. eyebrow + h1 (använd <em> för accentfärg) + sub.
+       Hero-QR är valfri: byt ut assets/qr.svg, eller ta bort blocket.
+       ════════════════════════════════════════════════════════════ -->
+  <section id="titel">
+    <p class="eyebrow">Sammanhang · Ämne · År</p>
+    <h1>Rubrik på<br><em>presentationen</em><br>över flera rader</h1>
+    <p class="hero-sub">En kort underrubrik som sätter tonen för hela presentationen på en eller två rader.</p>
+    <!-- Valfri QR: regenerera mot din URL och lägg som assets/qr.svg -->
+    <div class="hero-qr">
+      <img src="assets/qr.svg" alt="QR-kod">
+      <span>Skanna och följ med</span>
+    </div>
+    <span class="ctr">01 / 06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: LIST-SIDA (flöde + kort med punktlistor)
+       .flow med .fn-noder och .fa-pilar överst.
+       .cols-2 med .card som innehåller .card-label + ul.pts.
+       ════════════════════════════════════════════════════════════ -->
+  <section id="lista">
+    <p class="slide-label">Etikett</p>
+    <h2>Rubrik för list-sidan</h2>
+    <div class="flow" style="margin-bottom:1.25rem">
+      <span class="fn">Steg ett</span>
+      <span class="fa">→</span>
+      <span class="fn">Steg två</span>
+      <span class="fa">→</span>
+      <span class="fn">Steg tre</span>
+      <span class="fa">→</span>
+      <span class="fn">Steg fyra</span>
+    </div>
+    <div class="cols cols-2">
+      <div class="card">
+        <p class="card-label">Kort A</p>
+        <ul class="pts">
+          <li>Första punkten i listan</li>
+          <li>Andra punkten i listan</li>
+          <li>Tredje punkten i listan</li>
+          <li>Fjärde punkten i listan</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card-label">Kort B</p>
+        <ul class="pts">
+          <li>Första punkten i listan</li>
+          <li>Andra punkten i listan</li>
+          <li>Tredje punkten i listan</li>
+          <li>Fjärde punkten i listan</li>
+        </ul>
+      </div>
+    </div>
+    <span class="ctr">02 / 06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: KORT MED TAGGAR
+       .explain ovanför. .stack med .card → .card-head (.card-label + .tag)
+       och en .bd-beskrivning. .tag.g ger grön variant.
+       ════════════════════════════════════════════════════════════ -->
+  <section id="kort">
+    <p class="slide-label">Etikett</p>
+    <h2>Rubrik med kort och taggar</h2>
+    <p class="explain">En förklarande mening som ger kontext till korten nedan innan detaljerna.</p>
+    <div class="stack">
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Post ett</p>
+          <span class="tag">Tagg</span>
+          <span class="tag g">Grön tagg</span>
+        </div>
+        <p class="bd">Kort beskrivning av den första posten.</p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Post två</p>
+          <span class="tag">Tagg</span>
+          <span class="tag">Tagg</span>
+        </div>
+        <p class="bd">Kort beskrivning av den andra posten.</p>
+      </div>
+      <div class="card">
+        <div class="card-head">
+          <p class="card-label">Post tre</p>
+          <span class="tag">Tagg</span>
+        </div>
+        <p class="bd">Kort beskrivning av den tredje posten.</p>
+      </div>
+    </div>
+    <span class="ctr">03 / 06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: BILD-SIDA
+       .meme centrerar .meme-title + .meme-img. Byt src mot din bild.
+       (Här en inbäddad platshållare så mallen renderar utan extern fil.)
+       ════════════════════════════════════════════════════════════ -->
+  <section id="bild">
+    <div class="meme">
+      <h2 class="meme-title">Bildrubrik</h2>
+      <img class="meme-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='360'%3E%3Crect width='100%25' height='100%25' fill='%23e8e8ee'/%3E%3Ctext x='50%25' y='50%25' font-family='Inter,sans-serif' font-size='28' font-weight='600' fill='%23939393' text-anchor='middle' dominant-baseline='middle'%3EBILD%3C/text%3E%3C/svg%3E" alt="Platshållare för bild">
+    </div>
+    <span class="ctr">04 / 06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: BULLET-RADER (ikon + titel + beskrivning)
+       .cols-2/.cols-3 med .brows → .brow → .bicon (emoji) + .bt + .bd.
+       En rad visar .brow-tip (hover-tooltip via data-tip).
+       En .bd visar .ext (extern länk-badge).
+       ════════════════════════════════════════════════════════════ -->
+  <section id="rader">
+    <p class="slide-label">Etikett</p>
+    <h2>Rubrik med bullet-rader</h2>
+    <div class="cols cols-2">
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">①</div>
+          <div>
+            <p class="bt">Rad ett</p>
+            <p class="bd">Beskrivning av första raden.</p>
+          </div>
+        </div>
+        <div class="brow">
+          <div class="bicon">②</div>
+          <div>
+            <p class="bt">Rad två</p>
+            <p class="bd">Beskrivning med <a href="https://example.com" target="_blank" class="ext">länk ↗</a> som badge.</p>
+          </div>
+        </div>
+      </div>
+      <div class="brows">
+        <div class="brow">
+          <div class="bicon">③</div>
+          <div>
+            <p class="bt">Rad tre</p>
+            <p class="bd">Beskrivning av tredje raden.</p>
+          </div>
+        </div>
+        <div class="brow brow-tip" data-tip="Hover-tooltip: lägg en längre förklaring här via data-tip-attributet utan att ta plats i layouten.">
+          <div class="bicon">④</div>
+          <div>
+            <p class="bt">Rad med tooltip</p>
+            <p class="bd">Hovra för en längre förklaring.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">05 / 06</span>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SLIDE-TYP: PROCENT-STAPLAR
+       .ph-legend förklarar färgerna. .ph-bars → .ph-row → .ph-lbl + .ph-col.
+       Segment: .ph-seg med style="flex:N" som proportion, data-pct för
+       hover-tooltip, .ph-hi för vit topp-stripe (markerar en zon).
+       .ph-note är raden under stapeln.
+       ════════════════════════════════════════════════════════════ -->
+  <section id="staplar">
+    <p class="slide-label">Etikett</p>
+    <h2>Rubrik med procent-staplar</h2>
+    <div class="ph-legend">
+      <span><span class="ph-dot" style="background:#8b5cf6"></span>Kategori A</span>
+      <span><span class="ph-dot" style="background:#3b82f6"></span>Kategori B</span>
+      <span><span class="ph-dot" style="background:#da9926"></span>Kategori C</span>
+      <span><span class="ph-dot" style="background:#10b981"></span>Kategori D</span>
+      <span><span class="ph-dot" style="background:#06b6d4"></span>Kategori E</span>
+    </div>
+    <div class="ph-bars">
+      <div class="ph-row">
+        <span class="ph-lbl">Rad 1</span>
+        <div class="ph-col">
+          <div class="ph-track">
+            <div class="ph-seg" data-pct="Kategori A · 10%" style="flex:10;background:#8b5cf6"></div>
+            <div class="ph-seg" data-pct="Kategori B · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg ph-hi" data-pct="Kategori C · 50%" style="flex:50;background:#da9926"><span>Kategori C</span></div>
+            <div class="ph-seg" data-pct="Kategori D · 20%" style="flex:20;background:#10b981"><span>Kategori D</span></div>
+            <div class="ph-seg" data-pct="Kategori E · 10%" style="flex:10;background:#06b6d4"></div>
+          </div>
+          <p class="ph-note">Anteckning under stapeln.</p>
+        </div>
+      </div>
+      <div class="ph-row">
+        <span class="ph-lbl">Rad 2</span>
+        <div class="ph-col">
+          <div class="ph-track">
+            <div class="ph-seg ph-hi" data-pct="Kategori A · 10%" style="flex:10;background:#8b5cf6"><span>A</span></div>
+            <div class="ph-seg ph-hi" data-pct="Kategori B · 30%" style="flex:30;background:#3b82f6"><span>Kategori B</span></div>
+            <div class="ph-seg" data-pct="Kategori C · 10%" style="flex:10;background:#da9926"><span>C</span></div>
+            <div class="ph-seg ph-hi" data-pct="Kategori D · 35%" style="flex:35;background:#10b981"><span>Kategori D</span></div>
+            <div class="ph-seg" data-pct="Kategori E · 15%" style="flex:15;background:#06b6d4"><span>E</span></div>
+          </div>
+          <p class="ph-note">Anteckning under stapeln.</p>
+        </div>
+      </div>
+    </div>
+    <span class="ctr">06 / 06</span>
+  </section>
+
+</main>
+
+<script>
+  const sections = [...document.querySelectorAll('section')];
+  const nav      = document.getElementById('dots');
+  const N        = sections.length;
+  let   current  = 0;
+
+  // Slide-bakgrundsfärger i ordning — body-bg synkar mot föregående slides färg
+  const slideBgs = ['#111110', '#ffffff', '#faf6ef', '#ffffff', '#faf6ef', '#ffffff'];
+
+  const dots = sections.map((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    d.setAttribute('aria-label', 'Bild ' + (i + 1));
+    d.addEventListener('click', () => goTo(i));
+    nav.appendChild(d);
+    return d;
+  });
+
+  function goTo(i) { sections[i].scrollIntoView({ behavior: 'smooth' }); }
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.intersectionRatio >= 0.5) {
+        const i = sections.indexOf(e.target);
+        if (i >= 0) {
+          current = i;
+          dots.forEach((d, j) => d.classList.toggle('on', j === i));
+          document.body.style.backgroundColor = slideBgs[Math.max(0, i - 1)];
+          history.replaceState(null, '', '#' + e.target.id);
+        }
+      }
+    });
+  }, { threshold: 0.5 });
+
+  sections.forEach(s => obs.observe(s));
+
+  // Återställ position från URL-hash vid laddning
+  if (location.hash) {
+    const target = document.querySelector(location.hash);
+    if (target) setTimeout(() => target.scrollIntoView({ behavior: 'instant' }), 0);
+  }
+
+  document.addEventListener('keydown', e => {
+    const fwd = e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ';
+    const bck = e.key === 'ArrowUp'   || e.key === 'PageUp';
+    if (fwd) { e.preventDefault(); goTo(Math.min(current + 1, N - 1)); }
+    if (bck) { e.preventDefault(); goTo(Math.max(current - 1, 0)); }
+    if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    if (e.key === 'End')  { e.preventDefault(); goTo(N - 1); }
+  });
+
+  // Tooltips för procent-segment
+  const phTip = document.createElement('div');
+  Object.assign(phTip.style, {
+    position: 'fixed', pointerEvents: 'none', opacity: '0',
+    background: 'rgba(13,13,30,0.93)', color: '#eeeeff',
+    padding: '0.25em 0.6em', borderRadius: '6px',
+    fontSize: '0.7rem', fontWeight: '600', letterSpacing: '0.06em',
+    transition: 'opacity 0.1s', zIndex: '200', whiteSpace: 'nowrap',
+  });
+  document.body.appendChild(phTip);
+
+  document.querySelectorAll('.ph-seg[data-pct]').forEach(seg => {
+    seg.addEventListener('mouseenter', () => {
+      phTip.textContent = seg.dataset.pct;
+      phTip.style.opacity = '1';
+      const r = seg.getBoundingClientRect();
+      phTip.style.left = Math.round(r.left + r.width / 2 - phTip.offsetWidth / 2) + 'px';
+      phTip.style.top  = Math.round(r.bottom + 6) + 'px';
+    });
+    seg.addEventListener('mouseleave', () => { phTip.style.opacity = '0'; });
+  });
+</script>
+
+</body>
+</html>
