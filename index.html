@@ -778,11 +778,11 @@
         <span class="ph-lbl">Förr</span>
         <div class="ph-col">
           <div class="ph-track">
-            <div class="ph-seg" style="flex:10;background:#8b5cf6"></div>
-            <div class="ph-seg" style="flex:10;background:#3b82f6"></div>
-            <div class="ph-seg ph-hi" style="flex:50;background:#da9926"><span>Implementation</span></div>
-            <div class="ph-seg" style="flex:20;background:#10b981"><span>Review</span></div>
-            <div class="ph-seg" style="flex:10;background:#06b6d4"></div>
+            <div class="ph-seg" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"></div>
+            <div class="ph-seg" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg ph-hi" data-pct="Implementation · 50%" style="flex:50;background:#da9926"><span>Implementation</span></div>
+            <div class="ph-seg" data-pct="Review · 20%" style="flex:20;background:#10b981"><span>Review</span></div>
+            <div class="ph-seg" data-pct="Test · 10%" style="flex:10;background:#06b6d4"></div>
           </div>
           <p class="ph-note">Du kodar och lär dig om lösningen samtidigt</p>
         </div>
@@ -791,16 +791,16 @@
         <span class="ph-lbl">Nu</span>
         <div class="ph-col">
           <div class="ph-track">
-            <div class="ph-seg ph-hi" style="flex:10;background:#8b5cf6"></div>
-            <div class="ph-seg ph-hi" style="flex:10;background:#3b82f6"></div>
-            <div class="ph-seg" style="flex:10;background:#da9926"></div>
-            <div class="ph-seg ph-hi" style="flex:10;background:#10b981"></div>
-            <div class="ph-seg" style="flex:10;background:#06b6d4"></div>
-            <div class="ph-seg ph-hi" style="flex:10;background:#3b82f6"></div>
-            <div class="ph-seg" style="flex:10;background:#da9926"></div>
-            <div class="ph-seg ph-hi" style="flex:10;background:#10b981"></div>
-            <div class="ph-seg" style="flex:5;background:#da9926"></div>
-            <div class="ph-seg" style="flex:5;background:#06b6d4"></div>
+            <div class="ph-seg ph-hi" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 10%" style="flex:10;background:#10b981"></div>
+            <div class="ph-seg" data-pct="Test · 10%" style="flex:10;background:#06b6d4"></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 10%" style="flex:10;background:#3b82f6"></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 10%" style="flex:10;background:#10b981"></div>
+            <div class="ph-seg" data-pct="Implementation · 5%" style="flex:5;background:#da9926"></div>
+            <div class="ph-seg" data-pct="Test · 5%" style="flex:5;background:#06b6d4"></div>
           </div>
           <p class="ph-note">Planering = du formulerar avsikten. Impl = svart låda. Review = du betalar för otydligheten</p>
         </div>
@@ -809,11 +809,11 @@
         <span class="ph-lbl">Mål</span>
         <div class="ph-col">
           <div class="ph-track">
-            <div class="ph-seg ph-hi" style="flex:10;background:#8b5cf6"><span>Spec</span></div>
-            <div class="ph-seg ph-hi" style="flex:30;background:#3b82f6"><span>Planering</span></div>
-            <div class="ph-seg" style="flex:10;background:#da9926"><span>Impl.</span></div>
-            <div class="ph-seg ph-hi" style="flex:35;background:#10b981"><span>Review</span></div>
-            <div class="ph-seg" style="flex:15;background:#06b6d4"><span>Test</span></div>
+            <div class="ph-seg ph-hi" data-pct="Spec · 10%" style="flex:10;background:#8b5cf6"><span>Spec</span></div>
+            <div class="ph-seg ph-hi" data-pct="Planering · 30%" style="flex:30;background:#3b82f6"><span>Planering</span></div>
+            <div class="ph-seg" data-pct="Implementation · 10%" style="flex:10;background:#da9926"><span>Impl.</span></div>
+            <div class="ph-seg ph-hi" data-pct="Review · 35%" style="flex:35;background:#10b981"><span>Review</span></div>
+            <div class="ph-seg" data-pct="Test · 15%" style="flex:15;background:#06b6d4"><span>Test</span></div>
           </div>
           <p class="ph-note">Förståelsen kräver djup planering. Review validerar att avsikten landade rätt</p>
         </div>
@@ -873,6 +873,28 @@
     if (bck) { e.preventDefault(); goTo(Math.max(current - 1, 0)); }
     if (e.key === 'Home') { e.preventDefault(); goTo(0); }
     if (e.key === 'End')  { e.preventDefault(); goTo(N - 1); }
+  });
+
+  // Phase bar segment tooltips
+  const phTip = document.createElement('div');
+  Object.assign(phTip.style, {
+    position: 'fixed', pointerEvents: 'none', opacity: '0',
+    background: 'rgba(13,13,30,0.93)', color: '#eeeeff',
+    padding: '0.25em 0.6em', borderRadius: '6px',
+    fontSize: '0.7rem', fontWeight: '600', letterSpacing: '0.06em',
+    transition: 'opacity 0.1s', zIndex: '200', whiteSpace: 'nowrap',
+  });
+  document.body.appendChild(phTip);
+
+  document.querySelectorAll('.ph-seg[data-pct]').forEach(seg => {
+    seg.addEventListener('mouseenter', () => {
+      phTip.textContent = seg.dataset.pct;
+      phTip.style.opacity = '1';
+      const r = seg.getBoundingClientRect();
+      phTip.style.left = Math.round(r.left + r.width / 2 - phTip.offsetWidth / 2) + 'px';
+      phTip.style.top  = Math.round(r.bottom + 6) + 'px';
+    });
+    seg.addEventListener('mouseleave', () => { phTip.style.opacity = '0'; });
   });
 </script>
 
