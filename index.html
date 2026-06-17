@@ -99,6 +99,32 @@
       max-width: 46ch;
     }
 
+    /* ── Hero QR ── */
+    .hero-qr {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .hero-qr img {
+      width: 6rem;
+      height: 6rem;
+      background: #fff;
+      padding: 0.5rem;
+      border-radius: 12px;
+      display: block;
+    }
+    .hero-qr span {
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(238,238,255,0.5);
+    }
+
     /* ── Slide header ── */
     .slide-label {
       font-size: 0.65rem;
@@ -330,7 +356,7 @@
       color: rgba(13,13,30,0.25);
     }
 
-    section:first-child .ctr { color: rgba(238,238,255,0.2); }
+    section:first-child .ctr { color: rgba(238,238,255,0.2); left: 2.5rem; right: auto; }
 
     /* ── Tooltip on brow items ── */
     .brow-tip { position: relative; }
@@ -436,6 +462,10 @@
     <p class="eyebrow">Camfil · Agentisk Utveckling · 2026</p>
     <h1>Hur vi bygger<br><em>AI-agenter</em><br>med AI-agenter</h1>
     <p class="hero-sub">Automatisering med agentdrivna arbetsflöden och hur vi jobbar</p>
+    <div class="hero-qr">
+      <img src="assets/qr.svg" alt="QR-kod till presentationen">
+      <span>Skanna och följ med</span>
+    </div>
     <span class="ctr">01 / 10</span>
   </section>
 
